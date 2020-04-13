@@ -15,6 +15,8 @@ app.use(express.static(path.join(__dirname, 'build')));
 const groceriesRouter = require('./routes/api/groceries');
 
 // api routes before "catch all"
+app.use('/api/users', require('./routes/api/users'));
+app.use(require('./config/auth'));
 app.use('/api/groceries', groceriesRouter);
 
 // "catch all" route
