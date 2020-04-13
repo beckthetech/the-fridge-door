@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, NavLink } from 'react-router-dom';
-
 import * as groceriesAPI from '../../services/groceries-api';
 import ItemListPage from '../../pages/ItemList/ItemListPage';
 import AddItemPage from '../../pages/AddItemPage/AddItemPage';
@@ -23,8 +22,8 @@ class App extends Component {
   // Lifecycle Methods
 
   async componentDidMount() {
-    console.log('mounted')
     const groceries = await groceriesAPI.getAll();
+    console.log('mounted', groceries);
     this.setState({ groceries });
   }
 

@@ -3,7 +3,10 @@ const BASE_URL = '/api/groceries';
 export function getAll() {
     console.log('hitting getAll')
     return fetch(BASE_URL)
-        .then(res => res.json());
+        .then(res => {
+            // console.log('hitting res', res)
+           return res.json()
+        });
 }
 
 export function create(item) {
