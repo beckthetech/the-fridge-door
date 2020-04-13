@@ -6,6 +6,7 @@ module.exports = {
 }
 
 async function index(req, res) {
+    console.log('hitting index function')
     const groceries = await Item.find({});
     res.status(200).json(groceries);
 }

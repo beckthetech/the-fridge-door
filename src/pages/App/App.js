@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, NavLink } from 'react-router-dom';
 
-import * as itemAPI from '../../services/groceries-api';
+import * as groceriesAPI from '../../services/groceries-api';
 import ItemListPage from '../../pages/ItemList/ItemListPage';
 import AddItemPage from '../../pages/AddItemPage/AddItemPage';
 
@@ -12,7 +12,8 @@ class App extends Component {
   };
 
   handleAddItem = async newItemData => {
-    const newItem = await itemAPI.create(newItemData);
+    console.log('here', newItemData)
+    const newItem = await groceriesAPI.create(newItemData);
     this.setState(state => ({
       groceries: [...state.groceries, newItem]
     }),
@@ -22,7 +23,8 @@ class App extends Component {
   // Lifecycle Methods
 
   async componentDidMount() {
-    const groceries = await itemAPI.getAll();
+    console.log('mounted')
+    const groceries = await groceriesAPI.getAll();
     this.setState({ groceries });
   }
 
