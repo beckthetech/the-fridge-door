@@ -4,7 +4,7 @@ export function getAll() {
     console.log('hitting getAll')
     return fetch(BASE_URL)
         .then(res => {
-            // console.log('hitting res', res)
+            console.log('hitting res', res)
            return res.json()
         });
 }
