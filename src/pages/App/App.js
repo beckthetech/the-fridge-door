@@ -11,7 +11,6 @@ class App extends Component {
   };
 
   handleAddItem = async newItemData => {
-    console.log('here', newItemData)
     const newItem = await groceriesAPI.create(newItemData);
     this.setState(state => ({
       groceries: [...state.groceries, newItem]
@@ -23,7 +22,6 @@ class App extends Component {
 
   async componentDidMount() {
     const groceries = await groceriesAPI.getAll();
-    console.log('mounted', groceries);
     this.setState({ groceries });
   }
 
