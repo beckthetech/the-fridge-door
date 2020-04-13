@@ -47,7 +47,7 @@ class App extends Component {
         <header >
           <NavBar
             user={this.state.user}
-            handleLogout={props.handleLogout}
+            handleLogout={this.handleLogout}
           />
           Groceries CR
           <nav>
