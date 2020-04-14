@@ -3,14 +3,20 @@ const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
 
+const userReviewSchema = new Schema({
+  author: { type: mongoose.Schema.Types.ObjectId, ref: 'Author' },
+  content: String
+}, { timestamps: true });
+
 const userSchema = new mongoose.Schema({
   displayName: String,
   email: { type: String, required: true, lowercase: true, unique: true },
   password: String,
   zipcode: { type: String, required: true },
-  gearForRent: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Gear' }],
-  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'UserReview' }],
-  rating: { type: Number, default: 0 }
+  gearForRent: [{ type: mongoose.Schema.Types.ObjectId, ref: 'RentableGear' }],
+  gearReturned: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ReturnedGear' }],
+  reviews: [userReviewSchema],
+  rating: { type: Number, min: 0, max: 5, default: 0 }
 }, {
   timestamps: true
 });
