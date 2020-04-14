@@ -12,7 +12,7 @@ const gearSchema = new Schema({
     name: String,
     description: String,
     available: Date,
-    reviews: [userReviewSchema],
+    reviews: [gearReviewSchema],
     rating: { type: Number, min: 0, max: 5, default: 0 }
 }, { timestamps: true });
 
