@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, NavLink } from 'react-router-dom';
-import * as groceriesAPI from '../../services/groceries-api';
+import * as itemsAPI from '../../services/items-api';
 
 import userService from '../../utils/userService';
 import SignupPage from '../../pages/SignupPage/SignupPage';
@@ -13,7 +13,7 @@ import AddItemPage from '../../pages/AddItemPage/AddItemPage';
 
 class App extends Component {
   state = {
-    groceries: [],
+    items: [],
     user: userService.getUser()
   };
 
@@ -27,9 +27,9 @@ class App extends Component {
   }
 
   handleAddItem = async newItemData => {
-    const newItem = await groceriesAPI.create(newItemData);
+    const newItem = await itemsAPI.create(newItemData);
     this.setState(state => ({
-      groceries: [...state.groceries, newItem]
+      items: [...state.items, newItem]
     }),
       () => this.props.history.push('/'));
   }
@@ -37,8 +37,8 @@ class App extends Component {
   // Lifecycle Methods
 
   async componentDidMount() {
-    const groceries = await groceriesAPI.getAll();
-    this.setState({ groceries });
+    const items = await itemsAPI.getAll();
+    this.setState({ items });
   }
 
   render() {
@@ -49,16 +49,16 @@ class App extends Component {
             user={this.state.user}
             handleLogout={this.handleLogout}
           />
-          Groceries CR
+          Gear CR
           <nav>
-            <NavLink exact to='/'>GROCERIES</NavLink>&nbsp;&nbsp;&nbsp;
+            <NavLink exact to='/'>View Gear</NavLink>&nbsp;&nbsp;&nbsp;
             <NavLink exact to='/add'>Add Item</NavLink>
           </nav>
         </header>
         <main>
           <Route exact path='/' render={() =>
             <ItemListPage
-              groceries={this.state.groceries}
+              items={this.state.items}
             />
           } />
           <Route exact path='/add' render={() =>

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
@@ -13,8 +14,8 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, lowercase: true, unique: true },
   password: String,
   zipcode: { type: String, required: true },
-  gearForRent: [{ type: mongoose.Schema.Types.ObjectId, ref: 'RentableGear' }],
-  gearReturned: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ReturnedGear' }],
+  itemsForRent: [{ type: mongoose.Schema.Types.ObjectId, ref: 'RentableItems' }],
+  itemsReturned: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ReturnedItems' }],
   reviews: [userReviewSchema],
   rating: { type: Number, min: 0, max: 5, default: 0 }
 }, {

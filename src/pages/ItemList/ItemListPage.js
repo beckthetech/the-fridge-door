@@ -6,7 +6,7 @@ function ItemListPage(props) {
         <>
             <h1>Grocery List</h1>
             <div>
-                {props.groceries.map(item =>
+                {props.items.map(item =>
                     <GroceryItem item={item} key={item._id}/>
                 )}
             </div>

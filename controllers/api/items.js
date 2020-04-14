@@ -6,8 +6,8 @@ module.exports = {
 }
 
 async function index(req, res) {
-    const groceries = await Item.find({});
-    res.status(200).json(groceries);
+    const items = await Item.find({});
+    res.status(200).json(items);
 }
 
 async function create(req, res) {

@@ -1,4 +1,4 @@
-const BASE_URL = '/api/groceries';
+const BASE_URL = '/api/items';
 
 export function getAll() {
     return fetch(BASE_URL)

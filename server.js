@@ -12,12 +12,12 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-const groceriesRouter = require('./routes/api/groceries');
+const itemsRouter = require('./routes/api/items');
 
 // api routes before "catch all"
 app.use('/api/users', require('./routes/api/users'));
 app.use(require('./config/auth'));
-app.use('/api/groceries', groceriesRouter);
+app.use('/api/items', itemsRouter);
 
 // "catch all" route
 app.get('/*', function (req, res) {
