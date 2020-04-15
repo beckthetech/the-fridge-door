@@ -14,7 +14,8 @@ import AddItemPage from '../../pages/AddItemPage/AddItemPage';
 class App extends Component {
   state = {
     items: [],
-    user: userService.getUser()
+    choices: [],
+    user: userService.getUser(),
   };
 
   handleSignupOrLogin = () => {

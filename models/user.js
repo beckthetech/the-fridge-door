@@ -14,8 +14,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, lowercase: true, unique: true },
   password: String,
   zipcode: { type: String, required: true },
-  itemsForRent: [{ type: mongoose.Schema.Types.ObjectId, ref: 'RentableItems' }],
-  itemsReturned: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ReturnedItems' }],
+  itemsForSale: [{ type: mongoose.Schema.Types.ObjectId, ref: 'RentableItems' }],
   reviews: [userReviewSchema],
   rating: { type: Number, min: 0, max: 5, default: 0 }
 }, {

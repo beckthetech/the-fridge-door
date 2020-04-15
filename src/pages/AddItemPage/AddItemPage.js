@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
+import itemCategories from '../../data';
 
 class AddItemPage extends Component {
     state = {
@@ -29,20 +31,28 @@ class AddItemPage extends Component {
             <>
                 <h1>Add Item</h1>
                 <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
-                    <label>Item</label>
+                    <label>Name</label>
                     <input
                         name="name"
                         value={this.state.formData.name}
                         onChange={this.handleChange}
                         required
                     />
-                        <label>Quantity</label>
-                        <input
-                            name="quantity"
-                            value={this.state.formData.quantity}
-                            onChange={this.handleChange}
-                            required
-                        />
+                    <label>Categories</label>
+                    <Select
+                        name="categories"
+                        options={itemCategories}
+                        value={this.state.formData.itemCategories}
+                        onChange={this.handleChange}
+                        required
+                    />
+                    <label>Description</label>
+                    <input
+                        name="description"
+                        value={this.state.formData.name}
+                        onChange={this.handleChange}
+                        required
+                    />
                     <button
                         type="submit"
                         disabled={this.state.invalidForm}
