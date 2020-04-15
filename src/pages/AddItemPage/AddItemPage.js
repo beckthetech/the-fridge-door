@@ -7,7 +7,8 @@ class AddItemPage extends Component {
         invalidForm: true,
         formData: {
             name: '',
-            quantity: ''
+            categoryChoices: '',
+            description: ''
         }
     };
 
@@ -19,12 +20,24 @@ class AddItemPage extends Component {
     }
 
     handleChange = e => {
-        const formData = { ...this.state.formData, [e.target.name]: e.target.value };
+        console.log(e)
+        const formData = { ...this.state.formData, [e.target.name]: e.target.value, };
+        console.log(formData)
         this.setState({
             formData,
             invalidForm: !this.formRef.current.checkValidity()
         });
     };
+
+    // handleChangeCategories = e => {
+    //     console.log(e)
+    //     const formData = { categoryChoices: e.target.value };
+    //     console.log(formData)
+    //     this.setState({
+    //         formData,
+    //         invalidForm: !this.formRef.current.checkValidity()
+    //     });
+    // };
 
     render() {
         return (
@@ -40,16 +53,16 @@ class AddItemPage extends Component {
                     />
                     <label>Categories</label>
                     <Select
-                        name="categories"
+                        name="categoryChoices"
                         options={itemCategories}
-                        value={this.state.formData.itemCategories}
-                        onChange={this.handleChange}
+                        value={this.state.formData.categoryChoices}
+                        // onChange={this.handleChangeCategories}
                         required
                     />
                     <label>Description</label>
                     <input
                         name="description"
-                        value={this.state.formData.name}
+                        value={this.state.formData.description}
                         onChange={this.handleChange}
                         required
                     />
