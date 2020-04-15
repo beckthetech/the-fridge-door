@@ -7,7 +7,7 @@ class AddItemPage extends Component {
         invalidForm: true,
         formData: {
             name: '',
-            categoryChoices: '',
+            categoryChoices: [],
             description: ''
         }
     };
@@ -29,17 +29,29 @@ class AddItemPage extends Component {
         });
     };
 
-    // handleChangeCategories = e => {
-    //     console.log(e)
-    //     const formData = { categoryChoices: e.target.value };
-    //     console.log(formData)
-    //     this.setState({
-    //         formData,
-    //         invalidForm: !this.formRef.current.checkValidity()
-    //     });
-    // };
+    handleChangeCategories = (value, { action, removedValue }) => {
+        // console.log(value, action, removedValue)
+        switch (action) {
+            case 'remove-value':
+            case 'pop-value':
+                if (removedValue.isFixed) {
+                    return;
+                }
+                break;
+            case 'clear':
+                value = itemCategories.filter(v => v.isFixed);
+                break;
+        }
+        let categoryChoices = [...this.state.formData.categoryChoices, value.value]
+        // categoryChoices.push(value.value)
+        console.log(categoryChoices)
+        let formData = { ...this.state.formData, ['categoryChoices']: categoryChoices }
+        this.setState({ formData, invalidForm: !this.formRef.current.checkValidity() });
+        // console.log(this.state)
+    }
 
     render() {
+        console.log(this.state)
         return (
             <>
                 <h1>Add Item</h1>
@@ -56,7 +68,7 @@ class AddItemPage extends Component {
                         name="categoryChoices"
                         options={itemCategories}
                         value={this.state.formData.categoryChoices}
-                        // onChange={this.handleChangeCategories}
+                        onChange={this.handleChangeCategories}
                         required
                     />
                     <label>Description</label>
