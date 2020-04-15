@@ -45,9 +45,15 @@ class AddItemPage extends Component {
         let categoryChoices = [...this.state.formData.categoryChoices, value.value]
         // categoryChoices.push(value.value)
         console.log(categoryChoices)
-        let formData = { ...this.state.formData, ['categoryChoices']: categoryChoices }
+        let formData = { ...this.state.formData, categoryChoices }
         this.setState({ formData, invalidForm: !this.formRef.current.checkValidity() });
         // console.log(this.state)
+    }
+
+    displayCategoryChoices(categoryChoices) {
+        let newStr = categoryChoices.join(', ')
+        console.log(newStr)
+        return newStr
     }
 
     render() {
@@ -67,7 +73,7 @@ class AddItemPage extends Component {
                     <Select
                         name="categoryChoices"
                         options={itemCategories}
-                        value={this.state.formData.categoryChoices}
+                        value={this.displayCategoryChoices(this.state.formData.categoryChoices)}
                         onChange={this.handleChangeCategories}
                         required
                     />
