@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
+import { Link } from 'react-router-dom';
 import itemCategories from '../../data';
 
-class AddItemPage extends Component {
+class EditItemPage extends Component {
     state = {
         selectedOption: null,
         invalidForm: true,
@@ -17,9 +18,7 @@ class AddItemPage extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.handleAddItem(this.state.formData);
-        console.log(this.state.formData)
-        console.log(this.state.selectedOption)
+        this.props.handleUpdateItem(this.state.formData);
     }
 
     handleChange = e => {
@@ -46,15 +45,13 @@ class AddItemPage extends Component {
         let formData = { ...this.state.formData, categoryChoices }
         let selectedOption = categoryChoices[0]
         this.setState({ formData, selectedOption, invalidForm: !this.formRef.current.checkValidity() });
-        console.log(this.state.formData)
-        console.log(this.state.selectedOption)
     }
 
 
     render() {
         return (
             <>
-                <h1>Add Item</h1>
+                <h1>Edit Item</h1>
                 <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
                     <label>Name</label>
                     <input
@@ -83,12 +80,13 @@ class AddItemPage extends Component {
                         type="submit"
                         disabled={this.state.invalidForm}
                     >
-                        ADD ITEM
-                    </button>
+                        SAVE ITEM
+                    </button>&nbsp;&nbsp;
+                    <Link to='/'>CANCEL</Link>
                 </form>
             </>
         );
     }
 }
 
-export default AddItemPage;
+export default EditItemPage;

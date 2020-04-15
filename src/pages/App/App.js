@@ -10,6 +10,8 @@ import LoginPage from '../../pages/LoginPage/LoginPage';
 import NavBar from '../../components/NavBar/NavBar';
 import ItemListPage from '../../pages/ItemList/ItemListPage';
 import AddItemPage from '../../pages/AddItemPage/AddItemPage';
+import ItemDetailPage from '../ItemDetailPage/ItemDetailPage';
+import EditItemPage from '../../pages/EditItemPage/EditItemPage'
 
 class App extends Component {
   state = {
@@ -33,6 +35,17 @@ class App extends Component {
       items: [...state.items, newItem]
     }),
       () => this.props.history.push('/'));
+  }
+
+  handleUpdateItem = async updatedItemData => {
+    const updatedItem = await itemsAPI.update(updatedItemData);
+    const newItemsArray = this.state.puppies.map(p => 
+      p._id === updatedItem._id ? updatedItem : p
+    );
+    this.setState(
+      {puppies: newItemsArray},
+      () => this.props.history.push('/')
+    );
   }
 
   // Lifecycle Methods
@@ -62,15 +75,21 @@ class App extends Component {
               items={this.state.items}
             />
           } />
+          <Route exact path='/details' render={({ location }) =>
+            <ItemDetailPage location={location} />
+          } />
           <Route exact path='/add' render={() =>
             <AddItemPage handleAddItem={this.handleAddItem}
+            />
+          } />
+          <Route exact path='/edit' render={({ location }) =>
+            <EditItemPage handleUpdateItem={this.handleUpdateItem} location={location}
             />
           } />
           <Route exact path='/signup' render={({ history }) =>
             <SignupPage
               history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />
+              handleSignupOrLogin={this.handleSignupOrLogin} />
           } />
           <Route exact path='/login' render={({ history }) =>
             <LoginPage
