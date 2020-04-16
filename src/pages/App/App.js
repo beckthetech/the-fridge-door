@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Redirect } from 'react-router-dom';
 import * as itemsAPI from '../../services/items-api';
 
 import userService from '../../utils/userService';
@@ -39,16 +39,16 @@ class App extends Component {
 
   handleUpdateItem = async updatedItemData => {
     const updatedItem = await itemsAPI.update(updatedItemData);
-    const newItemsArray = this.state.items.map(e => 
+    const newItemsArray = this.state.items.map(e =>
       e._id === updatedItem._id ? updatedItem : e
     );
     this.setState(
-      {items: newItemsArray},
+      { items: newItemsArray },
       () => this.props.history.push('/')
     );
   }
 
-  handleDeleteItem= async id => {
+  handleDeleteItem = async id => {
     await itemsAPI.deleteOne(id);
     this.setState(state => ({
       // Yay, filter returns a NEW array
@@ -74,7 +74,7 @@ class App extends Component {
           Gear CR
           <nav>
             <NavLink exact to='/'>View Gear</NavLink>&nbsp;&nbsp;&nbsp;
-            <NavLink exact to='/add'>Add Item</NavLink>
+            {this.state.user && <NavLink to='/add'>Add Item</NavLink>}
           </nav>
         </header>
         <main>
@@ -84,15 +84,21 @@ class App extends Component {
             />
           } />
           <Route exact path='/details' render={({ location }) =>
-            <ItemDetailPage location={location} handleDeleteItem={this.handleDeleteItem}/>
+            <ItemDetailPage location={location} handleDeleteItem={this.handleDeleteItem} />
           } />
           <Route exact path='/add' render={() =>
-            <AddItemPage handleAddItem={this.handleAddItem}
-            />
+            userService.getUser() ?
+              <AddItemPage handleAddItem={this.handleAddItem}
+              />
+              :
+              <Redirect to='/login' />
           } />
           <Route exact path='/edit' render={({ location }) =>
-            <EditItemPage handleUpdateItem={this.handleUpdateItem} location={location}
-            />
+            userService.getUser() ?
+              <EditItemPage handleUpdateItem={this.handleUpdateItem} location={location}
+              />
+              :
+              <Redirect to='/login' />
           } />
           <Route exact path='/signup' render={({ history }) =>
             <SignupPage

@@ -12,12 +12,10 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-const itemsRouter = require('./routes/api/items');
-
 // api routes before "catch all"
 app.use('/api/users', require('./routes/api/users'));
 app.use(require('./config/auth'));
-app.use('/api/items', itemsRouter);
+app.use('/api/items', require('./routes/api/items'));
 
 // "catch all" route
 app.get('/*', function (req, res) {
