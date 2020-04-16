@@ -3,6 +3,8 @@ import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import itemCategories from '../../data';
 
+import './EditItemPage.css'
+
 class EditItemPage extends Component {
     state = {
         invalidForm: true,
@@ -41,14 +43,16 @@ class EditItemPage extends Component {
                         required
                     />
                     <label>Categories</label>
-                    <Select
-                        value={this.state.formData.categories}
-                        isMulti
-                        name="categories"
-                        onChange={this.handleChangeCategories}
-                        options={itemCategories}
-                        required
-                    />
+                    <div className='categories-selector'>
+                        <Select
+                            value={this.state.formData.categories}
+                            isMulti
+                            name="categories"
+                            onChange={this.handleChangeCategories}
+                            options={itemCategories}
+                            required
+                        />
+                    </div>
                     <label>Description</label>
                     <input
                         name="description"

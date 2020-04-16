@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import itemCategories from '../../data';
 
+import './AddItemPage.css'
+
 class AddItemPage extends Component {
     state = {
         invalidForm: true,
@@ -44,14 +46,16 @@ class AddItemPage extends Component {
                         required
                     />
                     <label>Categories</label>
-                    <Select
-                        value={this.state.formData.categories}
-                        isMulti
-                        name="categories"
-                        onChange={this.handleChangeCategories}
-                        options={itemCategories}
-                        required
-                    />
+                    <div className='categories-selector'>
+                        <Select
+                            value={this.state.formData.categories}
+                            isMulti
+                            name="categories"
+                            onChange={this.handleChangeCategories}
+                            options={itemCategories}
+                            required
+                        />
+                    </div>
                     <label>Description</label>
                     <input
                         name="description"
