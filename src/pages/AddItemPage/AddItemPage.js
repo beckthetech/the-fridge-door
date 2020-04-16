@@ -8,7 +8,7 @@ class AddItemPage extends Component {
         invalidForm: true,
         formData: {
             name: '',
-            categoryChoices: '',
+            categories: '',
             description: ''
         }
     };
@@ -30,8 +30,8 @@ class AddItemPage extends Component {
         });
     };
 
-    handleChangeCategories = categoryChoices => { // eslint-disable-next-line
-        console.log(categoryChoices);
+    handleChangeCategories = categories => { // eslint-disable-next-line
+        console.log(categories);
         // switch (action) {
         //     case 'remove-value':
         //     case 'pop-value':
@@ -43,12 +43,12 @@ class AddItemPage extends Component {
         //         value = itemCategories.filter(v => v.isFixed);
         //         break;
         // }
-        // let categoryChoices = [...this.state.formData.categoryChoices, value.value];
-        // let formData = { ...this.state.formData, categoryChoices }
-        // let selectedOption = categoryChoices[0]
+        // let categories = [...this.state.formData.categories, value.value];
+        // let formData = { ...this.state.formData, categories }
+        // let selectedOption = categories[0]
 
-        this.setState({ formData: { ...this.state.formData, categoryChoices } });
-        console.log(`category choices: `, categoryChoices)
+        this.setState({ formData: { ...this.state.formData, categories } });
+        console.log(`category choices: `, categories)
 
         // this.setState({ formData, selectedOption, invalidForm: !this.formRef.current.checkValidity() });
     }
@@ -68,9 +68,9 @@ class AddItemPage extends Component {
                     />
                     <label>Categories</label>
                     <Select
-                        value={this.state.formData.categoryChoices}
+                        value={this.state.formData.categories}
                         isMulti
-                        name="categoryChoices"
+                        name="categories"
                         onChange={this.handleChangeCategories}
                         options={itemCategories}
                         required

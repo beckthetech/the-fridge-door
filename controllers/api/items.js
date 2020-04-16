@@ -18,8 +18,16 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
-    console.log(req.body);
+    console.log('req', req.body);
+    // const categories = [];
+    // req.body.categoryChoices.forEach(e => {
+    //     console.log(e)
+    //     categories.push(e)
+    // })
+    // console.log(categories);
+    // req.body = { ...req.body, [categories]: categoriesArr }
     const item = await Item.create(req.body);
+    // console.log('item', item)
     res.status(201).json(item);
 }
 
