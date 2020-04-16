@@ -10,10 +10,9 @@ const userReviewSchema = new Schema({
 }, { timestamps: true });
 
 const userSchema = new mongoose.Schema({
-  displayName: String,
+  name: String,
   email: { type: String, required: true, lowercase: true, unique: true },
   password: String,
-  zipcode: { type: String, required: true },
   itemsForSale: [{ type: mongoose.Schema.Types.ObjectId, ref: 'RentableItems' }],
   reviews: [userReviewSchema],
   rating: { type: Number, min: 0, max: 5, default: 0 }
