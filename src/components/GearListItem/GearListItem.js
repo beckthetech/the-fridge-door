@@ -18,11 +18,6 @@ function GearListItem({ item }) {
                 >
                     DETAILS
                 </Link>
-                <Link to={{
-                    pathname: '/edit',
-                    state: { item }
-                }}
-                >Edit</Link>
             </div>
         </div>
     );

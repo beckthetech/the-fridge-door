@@ -31,7 +31,6 @@ class AddItemPage extends Component {
         this.setState({ formData: { ...this.state.formData, categories } });
     }
 
-
     render() {
         return (
             <>

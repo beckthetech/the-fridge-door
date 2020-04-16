@@ -10,6 +10,7 @@ function ItemDetailPage(props) {
       <ItemCard
         key={item._id}
         item={item}
+        handleDeleteItem={props.handleDeleteItem}
       />
       <div><Link to='/'>RETURN TO ALL GEAR</Link></div>
     </>

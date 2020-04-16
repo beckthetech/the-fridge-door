@@ -5,13 +5,8 @@ import itemCategories from '../../data';
 
 class EditItemPage extends Component {
     state = {
-        selectedOption: null,
         invalidForm: true,
-        formData: {
-            name: '',
-            categoryChoices: [],
-            description: ''
-        }
+        formData: this.props.location.state.item
     };
 
     formRef = React.createRef();
@@ -29,24 +24,9 @@ class EditItemPage extends Component {
         });
     };
 
-    handleChangeCategories = (value, { action, removedValue }) => { // eslint-disable-next-line
-        switch (action) {
-            case 'remove-value':
-            case 'pop-value':
-                if (removedValue.isFixed) {
-                    return;
-                }
-                break;
-            case 'clear':
-                value = itemCategories.filter(v => v.isFixed);
-                break;
-        }
-        let categoryChoices = value ? [...this.state.formData.categoryChoices, value.value] : [];
-        let formData = { ...this.state.formData, categoryChoices }
-        let selectedOption = categoryChoices[0]
-        this.setState({ formData, selectedOption, invalidForm: !this.formRef.current.checkValidity() });
+    handleChangeCategories = categories => {
+        this.setState({ formData: { ...this.state.formData, categories } });
     }
-
 
     render() {
         return (
@@ -62,9 +42,9 @@ class EditItemPage extends Component {
                     />
                     <label>Categories</label>
                     <Select
-                        value={this.state.selectedOption}
+                        value={this.state.formData.categories}
                         isMulti
-                        name="categoryChoices"
+                        name="categories"
                         onChange={this.handleChangeCategories}
                         options={itemCategories}
                         required

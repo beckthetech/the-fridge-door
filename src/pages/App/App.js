@@ -39,13 +39,21 @@ class App extends Component {
 
   handleUpdateItem = async updatedItemData => {
     const updatedItem = await itemsAPI.update(updatedItemData);
-    const newItemsArray = this.state.puppies.map(p => 
-      p._id === updatedItem._id ? updatedItem : p
+    const newItemsArray = this.state.items.map(e => 
+      e._id === updatedItem._id ? updatedItem : e
     );
     this.setState(
-      {puppies: newItemsArray},
+      {items: newItemsArray},
       () => this.props.history.push('/')
     );
+  }
+
+  handleDeleteItem= async id => {
+    await itemsAPI.deleteOne(id);
+    this.setState(state => ({
+      // Yay, filter returns a NEW array
+      items: state.items.filter(item => item._id !== id)
+    }), () => this.props.history.push('/'));
   }
 
   // Lifecycle Methods
@@ -76,7 +84,7 @@ class App extends Component {
             />
           } />
           <Route exact path='/details' render={({ location }) =>
-            <ItemDetailPage location={location} />
+            <ItemDetailPage location={location} handleDeleteItem={this.handleDeleteItem}/>
           } />
           <Route exact path='/add' render={() =>
             <AddItemPage handleAddItem={this.handleAddItem}
