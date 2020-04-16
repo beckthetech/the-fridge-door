@@ -7,11 +7,12 @@ function ItemCard({ item, handleDeleteItem }) {
     return (
         <>
             <div>name: {item.name}, description: {item.description}, categories: {categories}</div>
-            <Link to={{
-                pathname: '/edit',
-                state: { item }
-            }}
-            >Edit</Link>
+            {this.state.user &&
+                <Link to={{
+                    pathname: '/edit',
+                    state: { item }
+                }}
+                >Edit</Link>}
             <button
                 onClick={() => handleDeleteItem(item._id)}
             >

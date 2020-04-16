@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
+const favicon = require('serve-favicon');
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(logger('dev'));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
+app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 
 // api routes before "catch all"
 app.use('/api/users', require('./routes/api/users'));
