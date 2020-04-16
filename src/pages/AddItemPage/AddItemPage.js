@@ -4,7 +4,6 @@ import itemCategories from '../../data';
 
 class AddItemPage extends Component {
     state = {
-        selectedOption: null,
         invalidForm: true,
         formData: {
             name: '',
@@ -18,8 +17,6 @@ class AddItemPage extends Component {
     handleSubmit = e => {
         e.preventDefault();
         this.props.handleAddItem(this.state.formData);
-        console.log(this.state.formData)
-        console.log(this.state.selectedOption)
     }
 
     handleChange = e => {
@@ -30,27 +27,8 @@ class AddItemPage extends Component {
         });
     };
 
-    handleChangeCategories = categories => { // eslint-disable-next-line
-        console.log(categories);
-        // switch (action) {
-        //     case 'remove-value':
-        //     case 'pop-value':
-        //         if (removedValue.isFixed) {
-        //             return;
-        //         }
-        //         break;
-        //     case 'clear':
-        //         value = itemCategories.filter(v => v.isFixed);
-        //         break;
-        // }
-        // let categories = [...this.state.formData.categories, value.value];
-        // let formData = { ...this.state.formData, categories }
-        // let selectedOption = categories[0]
-
+    handleChangeCategories = categories => {
         this.setState({ formData: { ...this.state.formData, categories } });
-        console.log(`category choices: `, categories)
-
-        // this.setState({ formData, selectedOption, invalidForm: !this.formRef.current.checkValidity() });
     }
 
 
