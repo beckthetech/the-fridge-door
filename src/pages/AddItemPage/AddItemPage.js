@@ -8,7 +8,7 @@ class AddItemPage extends Component {
         invalidForm: true,
         formData: {
             name: '',
-            categoryChoices: [],
+            categoryChoices: '',
             description: ''
         }
     };
@@ -30,24 +30,27 @@ class AddItemPage extends Component {
         });
     };
 
-    handleChangeCategories = (value, { action, removedValue }) => { // eslint-disable-next-line
-        switch (action) {
-            case 'remove-value':
-            case 'pop-value':
-                if (removedValue.isFixed) {
-                    return;
-                }
-                break;
-            case 'clear':
-                value = itemCategories.filter(v => v.isFixed);
-                break;
-        }
-        let categoryChoices = value ? [...this.state.formData.categoryChoices, value.value] : [];
-        let formData = { ...this.state.formData, categoryChoices }
-        let selectedOption = categoryChoices[0]
-        this.setState({ formData, selectedOption, invalidForm: !this.formRef.current.checkValidity() });
-        console.log(this.state.formData)
-        console.log(this.state.selectedOption)
+    handleChangeCategories = categoryChoices => { // eslint-disable-next-line
+        console.log(categoryChoices);
+        // switch (action) {
+        //     case 'remove-value':
+        //     case 'pop-value':
+        //         if (removedValue.isFixed) {
+        //             return;
+        //         }
+        //         break;
+        //     case 'clear':
+        //         value = itemCategories.filter(v => v.isFixed);
+        //         break;
+        // }
+        // let categoryChoices = [...this.state.formData.categoryChoices, value.value];
+        // let formData = { ...this.state.formData, categoryChoices }
+        // let selectedOption = categoryChoices[0]
+
+        this.setState({ formData: { ...this.state.formData, categoryChoices } });
+        console.log(`category choices: `, categoryChoices)
+
+        // this.setState({ formData, selectedOption, invalidForm: !this.formRef.current.checkValidity() });
     }
 
 
@@ -65,7 +68,7 @@ class AddItemPage extends Component {
                     />
                     <label>Categories</label>
                     <Select
-                        value={this.state.selectedOption}
+                        value={this.state.formData.categoryChoices}
                         isMulti
                         name="categoryChoices"
                         onChange={this.handleChangeCategories}

@@ -18,6 +18,7 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
+    console.log(req.body);
     const item = await Item.create(req.body);
     res.status(201).json(item);
 }
