@@ -4,14 +4,14 @@ import { Route, NavLink, Redirect } from 'react-router-dom';
 import * as itemsAPI from '../../services/items-api';
 
 import userService from '../../utils/userService';
-import SignupPage from '../../pages/SignupPage/SignupPage';
-import LoginPage from '../../pages/LoginPage/LoginPage';
+import SignupPage from '../SignupPage/SignupPage';
+import LoginPage from '../LoginPage/LoginPage';
 
 import NavBar from '../../components/NavBar/NavBar';
-import ItemListPage from '../../pages/ItemList/ItemListPage';
-import AddItemPage from '../../pages/AddItemPage/AddItemPage';
+import ItemListPage from '../ItemList/ItemListPage';
+import AddItemPage from '../AddItemPage/AddItemPage';
 import ItemDetailPage from '../ItemDetailPage/ItemDetailPage';
-import EditItemPage from '../../pages/EditItemPage/EditItemPage'
+import EditItemPage from '../EditItemPage/EditItemPage'
 
 class App extends Component {
   state = {

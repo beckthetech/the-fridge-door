@@ -7,6 +7,7 @@ const itemSchema = new Schema({
     zipcode: String,
     name: String,
     description: String,
+    price: String,
 }, { timestamps: true });
 
 module.exports = mongoose.model('Item', itemSchema);

@@ -8,7 +8,7 @@ function ItemCard({ item, handleDeleteItem, user }) {
         <span key={category.value}>{idx !== 0 ? ', ' : ''}{category.label}</span>)
     return (
         <>
-            <div>name: {item.name}, description: {item.description}, zipcode: {item.zipcode}, categories: {categories}</div>
+            <div>name: {item.name}, description: {item.description}, price: {item.price}, zipcode: {item.zipcode}, categories: {categories}</div>
             {user._id === item.user &&
                 <Link to={{
                     pathname: '/edit',

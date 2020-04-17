@@ -64,6 +64,20 @@ class EditItemPage extends Component {
                         onChange={this.handleChange}
                         required
                     />
+                    <label>Price</label>
+                    <input
+                        name="price"
+                        value={this.state.formData.price}
+                        onChange={this.handleChange}
+                        required
+                    />
+                    <label>Zipcode</label>
+                    <input
+                        name="zipcode"
+                        value={this.state.formData.zipcode}
+                        onChange={this.handleChange}
+                        required
+                    />
                     <button
                         type="submit"
                         disabled={this.state.invalidForm}

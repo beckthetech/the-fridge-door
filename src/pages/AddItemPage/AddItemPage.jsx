@@ -11,6 +11,7 @@ class AddItemPage extends Component {
             name: '',
             categories: '',
             description: '',
+            price: '',
             zipcode: ''
         }
     };
@@ -61,6 +62,13 @@ class AddItemPage extends Component {
                     <input
                         name="description"
                         value={this.state.formData.description}
+                        onChange={this.handleChange}
+                        required
+                    />
+                    <label>Price</label>
+                    <input
+                        name="price"
+                        value={this.state.formData.price}
                         onChange={this.handleChange}
                         required
                     />
