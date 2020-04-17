@@ -21,11 +21,15 @@ export function create(item) {
 }
 
 export function update(item) {
-    return fetch(`${BASE_URL}/${item._id}`, {
+    const options = {
         method: 'PUT',
-        headers: { 'content-type': 'application/json' },
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + tokenService.getToken()
+        },
         body: JSON.stringify(item)
-    }).then(res => res.json());
+    };
+    return fetch(`${BASE_URL}/${item._id}`, options).then(res => res.json());
 }
 
 export function deleteOne(id) {
