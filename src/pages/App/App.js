@@ -84,7 +84,7 @@ class App extends Component {
             />
           } />
           <Route exact path='/details' render={({ location }) =>
-            <ItemDetailPage location={location} handleDeleteItem={this.handleDeleteItem} />
+            <ItemDetailPage location={location} handleDeleteItem={this.handleDeleteItem} user={this.state.user}/>
           } />
           <Route exact path='/add' render={() =>
             userService.getUser() ?

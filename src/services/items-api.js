@@ -3,13 +3,7 @@ import tokenService from '../../src/utils/tokenService';
 const BASE_URL = '/api/items';
 
 export function getAll() {
-    // const options = {
-    //     method: 'GET',
-    //     headers: {
-    //         'Authorization': 'Bearer ' + tokenService.getToken()
-    //     }
-    // };
-    return fetch(BASE_URL/*, options*/)
+    return fetch(BASE_URL)
         .then(res => res.json());
 }
 
