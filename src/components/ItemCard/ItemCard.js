@@ -9,12 +9,12 @@ function ItemCard({ item, handleDeleteItem, user }) {
     return (
         <>
             <div>name: {item.name}, description: {item.description}, zipcode: {item.zipcode}, categories: {categories}</div>
-            {(user._id === item.user) &&
+            {user._id === item.user &&
                 <Link to={{
                     pathname: '/edit',
                     state: { item }
                 }}>Edit</Link>
-            } {(user._id === item.user) &&
+            } {user._id === item.user &&
                 <button
                     onClick={() => handleDeleteItem(item._id)}
                 >

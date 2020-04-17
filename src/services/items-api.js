@@ -33,7 +33,9 @@ export function update(item) {
 }
 
 export function deleteOne(id) {
-    return fetch(`${BASE_URL}/${id}`, {
-        method: 'DELETE'
-    }).then(res => res.json());
+    const options = {
+        method: 'DELETE',
+        headers: { 'Authorization': 'Bearer ' + tokenService.getToken() }
+    };
+    return fetch(`${BASE_URL}/${id}`, options).then(res => res.json());
 }

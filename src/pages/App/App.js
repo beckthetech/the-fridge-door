@@ -95,7 +95,7 @@ class App extends Component {
           } />
           <Route exact path='/edit' render={({ location }) =>
             userService.getUser() ?
-              <EditItemPage handleUpdateItem={this.handleUpdateItem} location={location}
+              <EditItemPage handleUpdateItem={this.handleUpdateItem} location={location} user={this.state.user}
               />
               :
               <Redirect to='/login' />
