@@ -4,19 +4,12 @@ const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
 
-const userReviewSchema = new Schema({
-  author: { type: mongoose.Schema.Types.ObjectId, ref: 'Author' },
-  content: String
-}, { timestamps: true });
-
 const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, required: true, lowercase: true, unique: true },
   password: String,
   zipcode: String,
   itemsForSale: [{ type: mongoose.Schema.Types.ObjectId, ref: 'RentableItems' }],
-  reviews: [userReviewSchema],
-  rating: { type: Number, min: 0, max: 5, default: 0 }
 }, {
   timestamps: true
 });

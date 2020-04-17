@@ -12,7 +12,6 @@ export function create(item) {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
-            // Add this header - don't forget the space after Bearer
             'Authorization': 'Bearer ' + tokenService.getToken()
         },
         body: JSON.stringify(item)
