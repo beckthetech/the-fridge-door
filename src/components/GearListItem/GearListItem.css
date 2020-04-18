@@ -1,3 +1,10 @@
 .GearListItem {
     border: solid black;
+    padding-left: 10px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+}
+
+.gearListItem-detail-link {
+    text-align: right;
 }

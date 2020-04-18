@@ -66,15 +66,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header >
+        <header className="App-header">
           <NavBar
             user={this.state.user}
             handleLogout={this.handleLogout}
           />
-          Gear CR
           <nav>
-            <NavLink exact to='/'>View Gear</NavLink>&nbsp;&nbsp;&nbsp;
-            {this.state.user && <NavLink to='/add'>Add Item</NavLink>}
+            <NavLink exact to='/'>Marketplace</NavLink>&nbsp;&nbsp;&nbsp;
+            {this.state.user && <NavLink to='/add'>List Item</NavLink>}
           </nav>
         </header>
         <main>

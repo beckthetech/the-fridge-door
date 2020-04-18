@@ -9,7 +9,7 @@ function GearListItem({ item }) {
             <div>
                 <h3>{item.name}</h3>
             </div>
-            <div>
+            <div className="gearListItem-detail-link">
                 <Link
                     to={{
                         pathname: '/details',

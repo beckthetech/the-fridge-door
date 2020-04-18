@@ -13,7 +13,7 @@ function ItemDetailPage(props) {
         user={props.user}
         handleDeleteItem={props.handleDeleteItem}
       />
-      <div><Link to='/'>RETURN TO ALL GEAR</Link></div>
+      <Link to='/'>Return to EquipT Marketplace</Link>
     </>
   );
 }

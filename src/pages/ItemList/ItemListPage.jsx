@@ -1,11 +1,13 @@
 import React from 'react';
 import GearListItem from '../../components/GearListItem/GearListItem';
 
+import './ItemListPage.css'
+
 function ItemListPage(props) {
     return (
         <>
-            <h1>Gear List</h1>
-            <div>
+            <h1 className="marketplace-title">Get EquipT</h1>
+            <div className='GearListPage-grid'>
                 {props.items.map(item =>
                     <GearListItem item={item} key={item._id}/>
                 )}

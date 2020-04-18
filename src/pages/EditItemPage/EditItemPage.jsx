@@ -5,7 +5,6 @@ import itemCategories from '../../data';
 
 import './EditItemPage.css'
 
-
 class EditItemPage extends Component {
     state = {
         invalidForm: true,
@@ -91,7 +90,7 @@ class EditItemPage extends Component {
     }
 
     render() {
-        return this.state.formData ? this.renderEditItemForm() : <Redirect to='/login' />;
+        return this.state.formData ? this.renderEditItemForm() : <Redirect to='/' />;
     }
 }
 
