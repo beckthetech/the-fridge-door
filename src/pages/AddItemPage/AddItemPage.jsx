@@ -80,6 +80,7 @@ class AddItemPage extends Component {
                         <label>Zipcode</label>
                         <input className="form-control"
                             name="zipcode"
+                            // defaultValue="91360"
                             value={this.state.formData.zipcode}
                             onChange={this.handleChange}
                             required

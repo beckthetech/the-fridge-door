@@ -55,7 +55,7 @@ class SignupForm extends Component {
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder="default zip to be set" value={this.state.zipcode} name="zipcode" onChange={this.handleChange} />
+              <input type="text" className="form-control" placeholder="zipcode" value={this.state.zipcode} name="zipcode" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">

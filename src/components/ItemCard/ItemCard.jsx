@@ -24,6 +24,9 @@ function ItemCard({ item, handleDeleteItem, user }) {
                     <dl>
                         <dt>Zipcode: </dt> <dd>{item.zipcode}</dd>
                     </dl>
+                    <dl>
+                        <dt>Categories: </dt> <dd>{categories}</dd>
+                    </dl>
                 </div>
                 <div className="panel-footer">
                     {user._id === item.user &&
