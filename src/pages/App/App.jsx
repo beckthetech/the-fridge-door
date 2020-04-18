@@ -8,7 +8,7 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 
 import NavBar from '../../components/NavBar/NavBar';
-import ItemListPage from '../ItemList/ItemListPage';
+import ItemListPage from '../ItemListPage/ItemListPage';
 import AddItemPage from '../AddItemPage/AddItemPage';
 import ItemDetailPage from '../ItemDetailPage/ItemDetailPage';
 import EditItemPage from '../EditItemPage/EditItemPage'
