@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import itemCategories from '../../data';
 
-import './AddItemPage.css'
-
 class AddItemPage extends Component {
     state = {
         invalidForm: true,
@@ -40,46 +38,54 @@ class AddItemPage extends Component {
             <>
                 <h1>Add Item</h1>
                 <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
-                    <label>Name</label>
-                    <input
-                        name="name"
-                        value={this.state.formData.name}
-                        onChange={this.handleChange}
-                        required
-                    />
-                    <label>Categories</label>
-                    <div className='categories-selector'>
-                        <Select
-                            value={this.state.formData.categories}
-                            isMulti
-                            name="categories"
-                            onChange={this.handleChangeCategories}
-                            options={itemCategories}
+                    <div className="form-group">
+                        <label>Name</label>
+                        <input className="form-control"
+                            name="name"
+                            value={this.state.formData.name}
+                            onChange={this.handleChange}
                             required
                         />
                     </div>
-                    <label>Description</label>
-                    <input
-                        name="description"
-                        value={this.state.formData.description}
-                        onChange={this.handleChange}
-                        required
-                    />
-                    <label>Price</label>
-                    <input
-                        name="price"
-                        value={this.state.formData.price}
-                        onChange={this.handleChange}
-                        required
-                    />
-                    <label>Zipcode</label>
-                    <input
-                        name="zipcode"
-                        value={this.state.formData.zipcode}
-                        onChange={this.handleChange}
-                        required
-                    />
-                    <button
+                    <div className="form-group">
+                        <label>Categories</label>
+                            <Select
+                                value={this.state.formData.categories}
+                                isMulti
+                                name="categories"
+                                onChange={this.handleChangeCategories}
+                                options={itemCategories}
+                                required
+                            />
+                    </div>
+                    <div className="form-group">
+                        <label>Description</label>
+                        <input className="form-control"
+                            name="description"
+                            value={this.state.formData.description}
+                            onChange={this.handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Price</label>
+                        <input className="form-control"
+                            name="price"
+                            value={this.state.formData.price}
+                            onChange={this.handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Zipcode</label>
+                        <input className="form-control"
+                            name="zipcode"
+                            value={this.state.formData.zipcode}
+                            onChange={this.handleChange}
+                            required
+                        />
+                    </div>
+                    <button className="btn"
                         type="submit"
                         disabled={this.state.invalidForm}
                     >
