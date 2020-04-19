@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const itemSchema = new Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     categories: [],
-    zipcode: String,
+    city: String,
     name: String,
     description: String,
     price: String,

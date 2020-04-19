@@ -7,7 +7,7 @@ class SignupForm extends Component {
   state = {
     name: '',
     email: '',
-    zipcode: '',
+    city: '',
     password: '',
     passwordConf: ''
   };
@@ -35,7 +35,7 @@ class SignupForm extends Component {
   }
 
   isFormInvalid() {
-    return !(this.state.name && this.state.email && this.state.zipcode && this.state.password === this.state.passwordConf);
+    return !(this.state.name && this.state.email && this.state.city && this.state.password === this.state.passwordConf);
   }
 
   render() {
@@ -55,7 +55,7 @@ class SignupForm extends Component {
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder="zipcode" value={this.state.zipcode} name="zipcode" onChange={this.handleChange} />
+              <input type="text" className="form-control" placeholder="city" value={this.state.city} name="city" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">

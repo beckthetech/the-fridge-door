@@ -10,7 +10,7 @@ class AddItemPage extends Component {
             categories: '',
             description: '',
             price: '',
-            zipcode: ''
+            city: ''
         }
     };
 
@@ -77,11 +77,10 @@ class AddItemPage extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label>Zipcode</label>
+                        <label>City, State</label>
                         <input className="form-control"
-                            name="zipcode"
-                            // defaultValue="91360"
-                            value={this.state.formData.zipcode}
+                            name="city"
+                            value={this.state.formData.city}
                             onChange={this.handleChange}
                             required
                         />

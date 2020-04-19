@@ -19,7 +19,7 @@ function ItemCard({ item, handleDeleteItem, user }) {
                         <dt>Price: </dt> <dd>${item.price}</dd>
                     </dl>
                     <dl>
-                        <dt>Zipcode: </dt> <dd>{item.zipcode}</dd>
+                        <dt>City, State: </dt> <dd>{item.city}</dd>
                     </dl>
                     <dl>
                         <dt>Categories: </dt> <dd>{categories}</dd>
@@ -32,7 +32,7 @@ function ItemCard({ item, handleDeleteItem, user }) {
                     {user._id === item.user &&
                         <Link to={{
                             pathname: '/edit',
-                            state: { item }
+                            state: { item },
                         }}>Edit</Link>
                     } {user._id === item.user &&
                         <button className="btn-delete"

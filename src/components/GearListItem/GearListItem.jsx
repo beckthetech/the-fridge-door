@@ -8,6 +8,7 @@ function GearListItem({ item }) {
         <div className="GearListItem">
             <div>
                 <h3>{item.name}</h3>
+                <h5>{item.city}</h5>
                 <h5>${item.price}</h5>
             </div>
             <div className="gearListItem-detail-link">

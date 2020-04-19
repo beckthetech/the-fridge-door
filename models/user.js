@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, required: true, lowercase: true, unique: true },
   password: String,
-  zipcode: String,
+  city: String,
   itemsForSale: [{ type: mongoose.Schema.Types.ObjectId, ref: 'RentableItems' }],
 }, {
   timestamps: true
