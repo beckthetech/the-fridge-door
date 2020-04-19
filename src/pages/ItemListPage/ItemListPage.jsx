@@ -10,6 +10,7 @@ function ItemListPage(props) {
             <h4 className="marketplace-copy">A marketplace for buying and selling Audio and Video production equipment</h4>
             <br />
             <br />
+            <br />
             <div className='GearListPage-grid'>
                 {props.items.map(item =>
                     <GearListItem item={item} key={item._id}/>
