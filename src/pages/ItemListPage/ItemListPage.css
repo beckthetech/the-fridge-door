@@ -7,7 +7,11 @@
 
 .marketplace-title {
     font-family: monospace;
-    font-style: italic;
+    font-style: normal;
     font-weight: 900;
     font-size: 55px;
+}
+
+.marketplace-copy {
+    font-style: italic;
 }

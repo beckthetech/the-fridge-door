@@ -36,7 +36,7 @@ class AddItemPage extends Component {
     render() {
         return (
             <>
-                <h1>Add Item</h1>
+                <h1>Add Equipment</h1>
                 <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label>Name</label>

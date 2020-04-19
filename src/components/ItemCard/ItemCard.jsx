@@ -16,16 +16,16 @@ function ItemCard({ item, handleDeleteItem, user }) {
                 </div>
                 <div className="panel-body">
                     <dl>
-                        <dt>Description: </dt> <dd>{item.description}</dd>
-                    </dl>
-                    <dl>
-                        <dt>Price: </dt> <dd>{item.price}</dd>
+                        <dt>Price: </dt> <dd>${item.price}</dd>
                     </dl>
                     <dl>
                         <dt>Zipcode: </dt> <dd>{item.zipcode}</dd>
                     </dl>
                     <dl>
                         <dt>Categories: </dt> <dd>{categories}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Description: </dt> <dd>{item.description}</dd>
                     </dl>
                 </div>
                 <div className="panel-footer">

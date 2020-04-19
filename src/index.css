@@ -30,6 +30,7 @@ a {
 a:hover {
   color: var(--black);
   background-color: var(--accent);
+  font-weight: 800;
 }
 a.active {
   color: var(--black);
