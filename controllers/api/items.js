@@ -1,5 +1,4 @@
 const Item = require('../../models/item');
-const User = require('../../models/user');
 
 module.exports = {
     index,
@@ -18,9 +17,7 @@ async function index(req, res) {
 async function show(req, res) {
     console.log('show function')
     const item = await Item.findById(req.params.id);
-    const owner = await User.findById(item.user);
     res.status(200).json(item);
-    console.log(owner)
 }
 
 async function create(req, res) {

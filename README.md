@@ -2,7 +2,7 @@
 
 ## Description
 
-##### A marketplace for buying and selling Audio and Video production equipment. User's can create an account to access the marketplace and view or list items for sale. User's can add category tags and image links to their items.
+##### A marketplace for buying and selling Audio and Video production equipment. Users can create an account to access the marketplace and view or list items for sale. Users can add category tags and image links to their items.
 
 ## Screenshots
 
