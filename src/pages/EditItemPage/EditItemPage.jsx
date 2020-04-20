@@ -98,14 +98,14 @@ class EditItemPage extends Component {
                     >
                         SAVE ITEM
                     </button>&nbsp;&nbsp;
-                    <Link to='/'>CANCEL</Link>
+                    <Link to='/marketplace'>CANCEL</Link>
                 </form>
             </>
         )
     }
 
     render() {
-        return this.state.formData ? this.renderEditItemForm() : <Redirect to='/' />;
+        return this.state.formData ? this.renderEditItemForm() : <Redirect to='/marketplace' />;
     }
 }
 

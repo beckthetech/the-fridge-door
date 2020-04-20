@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, NavLink, Redirect } from 'react-router-dom';
-import * as itemsAPI from '../../services/items-api';
 
+import * as itemsAPI from '../../services/items-api';
 import userService from '../../utils/userService';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
-
 import NavBar from '../../components/NavBar/NavBar';
 import ItemListPage from '../ItemListPage/ItemListPage';
 import AddItemPage from '../AddItemPage/AddItemPage';
 import ItemDetailPage from '../ItemDetailPage/ItemDetailPage';
-import EditItemPage from '../EditItemPage/EditItemPage'
+import EditItemPage from '../EditItemPage/EditItemPage';
+import LandingPage from '../../pages/LandingPage/LandingPage';
+
 
 class App extends Component {
   state = {
@@ -34,7 +35,7 @@ class App extends Component {
     this.setState(state => ({
       items: [...state.items, newItem]
     }),
-      () => this.props.history.push('/'));
+      () => this.props.history.push('/marketplace'));
   }
 
   handleUpdateItem = async updatedItemData => {
@@ -44,16 +45,15 @@ class App extends Component {
     );
     this.setState(
       { items: newItemsArray },
-      () => this.props.history.push('/')
+      () => this.props.history.push('/marketplace')
     );
   }
 
   handleDeleteItem = async id => {
     await itemsAPI.deleteOne(id);
     this.setState(state => ({
-      // Yay, filter returns a NEW array
       items: state.items.filter(item => item._id !== id)
-    }), () => this.props.history.push('/'));
+    }), () => this.props.history.push('/marketplace'));
   }
 
   // Lifecycle Methods
@@ -72,18 +72,21 @@ class App extends Component {
             handleLogout={this.handleLogout}
           />
           <nav>
-            <NavLink exact to='/'>Marketplace</NavLink>&nbsp;&nbsp;&nbsp;
+            {this.state.user && <NavLink exact to='/marketplace'>Marketplace</NavLink>}&nbsp;&nbsp;&nbsp;
             {this.state.user && <NavLink to='/add'>List Item</NavLink>}
           </nav>
         </header>
         <main>
           <Route exact path='/' render={() =>
+            <LandingPage user={this.state.user}/>
+          } />
+          <Route exact path='/marketplace' render={() =>
             <ItemListPage
               items={this.state.items}
             />
           } />
           <Route exact path='/details' render={({ location }) =>
-            <ItemDetailPage location={location} handleDeleteItem={this.handleDeleteItem} user={this.state.user}/>
+            <ItemDetailPage location={location} handleDeleteItem={this.handleDeleteItem} user={this.state.user} />
           } />
           <Route exact path='/add' render={() =>
             userService.getUser() ?

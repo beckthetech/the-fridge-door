@@ -50,3 +50,7 @@ dl {
 h3 {
   font-style: normal;
 }
+
+.logo:hover {
+  background-color: white;
+}
