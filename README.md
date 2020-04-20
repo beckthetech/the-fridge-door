@@ -22,7 +22,7 @@
 ![img5]
 
 ## Technologies Used
-MERN stack - JavaScipt, Node.js, Express.js, Mongoose ODM, React - MongoDB, JSON, JWT, HTML, CSS, Bootstrap
+MERN stack - JavaScipt, React, Node.js, Express.js, Mongoose/MongoDB - JSON, JWT, HTML, CSS, Bootstrap
 
 ## Getting Started
 [Click here to get EquipT]: https://equip-t.herokuapp.com/
