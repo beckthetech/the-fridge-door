@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, lowercase: true, unique: true },
   password: String,
   city: String,
+  contactInfo: String,
   itemsForSale: [{ type: mongoose.Schema.Types.ObjectId, ref: 'RentableItems' }],
 }, {
   timestamps: true

@@ -83,6 +83,15 @@ class EditItemPage extends Component {
                             required
                         />
                     </div>
+                    <div className="form-group">
+                        <label>Seller Contact Info</label>
+                        <input className="form-control"
+                            name="contactInfo"
+                            value={this.state.formData.contactInfo}
+                            onChange={this.handleChange}
+                            required
+                        />
+                    </div>
                     <button className="btn"
                         type="submit"
                         disabled={this.state.invalidForm}

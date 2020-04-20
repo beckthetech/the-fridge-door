@@ -8,6 +8,8 @@ const itemSchema = new Schema({
     name: String,
     description: String,
     price: String,
+    contactInfo: String,
+    owner: String
 }, { timestamps: true });
 
 module.exports = mongoose.model('Item', itemSchema);
