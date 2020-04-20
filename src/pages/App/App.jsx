@@ -73,7 +73,7 @@ class App extends Component {
           />
           <nav>
             <NavLink exact to='/'>Marketplace</NavLink>&nbsp;&nbsp;&nbsp;
-            {this.state.user && <NavLink to='/add'>List New Item</NavLink>}
+            {this.state.user && <NavLink to='/add'>List Item</NavLink>}
           </nav>
         </header>
         <main>
