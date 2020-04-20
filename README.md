@@ -2,21 +2,24 @@
 
 ## Description
 
-##### A marketplace for buying and selling Audio and Video production equipment. Sign up to list new items. Login to access the contact info for an item you want to buy.
+##### A marketplace for buying and selling Audio and Video production equipment. User's can create an account to access the marketplace and view or list items for sale. User's can add category tags and image links to their items.
 
 ## Screenshots
 
-[img1]: 
+[img1]: https://i.imgur.com/aDTSw0B.png
 ![img1]
 
-[img2]: 
+[img2]: https://i.imgur.com/w6thwg2.png
 ![img2]
 
-[img3]: 
+[img3]: https://i.imgur.com/RTzRh66.png
 ![img3]
 
-[img4]: 
+[img4]: https://i.imgur.com/XDCwAoB.png
 ![img4]
+
+[img5]: https://i.imgur.com/xpCeRoK.png
+![img5]
 
 ## Technologies Used
 MERN stack - JavaScipt, Node.js, Express.js, Mongoose ODM, React - MongoDB, JSON, JWT, HTML, CSS, Bootstrap
@@ -32,4 +35,9 @@ MERN stack - JavaScipt, Node.js, Express.js, Mongoose ODM, React - MongoDB, JSON
 [Click for GitHub repo]
 
 ## Next Steps
-- Keyword Search
+- Keyword search
+- Filter by category/location
+- User profiles
+- Rate and review buyers/sellers
+- Image hosting on AWS
+- Realtime messaging via web sockets
