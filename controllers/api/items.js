@@ -9,13 +9,11 @@ module.exports = {
 }
 
 async function index(req, res) {
-    console.log('index function')
     const items = await Item.find({});
     res.status(200).json(items);
 }
 
 async function show(req, res) {
-    console.log('show function')
     const item = await Item.findById(req.params.id);
     res.status(200).json(item);
 }
