@@ -34,6 +34,10 @@ dl {
     justify-content: space-between;
 }
 
+.panel-title {
+    font-size: 25px;
+}
+
 .panel-footer>a:hover {
     color: whitesmoke;
 }

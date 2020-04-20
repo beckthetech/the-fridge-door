@@ -12,9 +12,10 @@ function ItemCard({ item, handleDeleteItem, user }) {
         <>
             <div className="panel panel-default">
                 <div className="panel-heading">
-                    <h3 className="panel-title">{item.name}</h3>
+                    <h2 className="panel-title">{item.name}</h2>
                 </div>
                 <div className="panel-body">
+                    {item.imageLink && <span className="hero-image"><img src={`${item.imageLink}`} /></span>}
                     <dl>
                         <dt>Price: </dt> <dd>${item.price}</dd>
                     </dl>
@@ -27,7 +28,7 @@ function ItemCard({ item, handleDeleteItem, user }) {
                     <dl>
                         <dt>Description: </dt> <dd>{item.description}</dd>
                     </dl>
-                    {user._id && 
+                    {user._id &&
                         <dl>
                             <dt>Contact: </dt> <dd>{item.owner} at {item.contactInfo}</dd>
                         </dl>

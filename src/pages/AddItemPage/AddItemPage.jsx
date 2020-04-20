@@ -11,7 +11,8 @@ class AddItemPage extends Component {
             description: '',
             price: '',
             city: '',
-            contactInfo: ''
+            contactInfo: '',
+            imageLink: ''
         }
     };
 
@@ -93,6 +94,14 @@ class AddItemPage extends Component {
                             value={this.state.formData.contactInfo}
                             onChange={this.handleChange}
                             required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Image Link (optional)</label>
+                        <input className="form-control"
+                            name="imageLink"
+                            value={this.state.formData.imageLink}
+                            onChange={this.handleChange}
                         />
                     </div>
                     <button className="btn"

@@ -114,6 +114,8 @@ class App extends Component {
             />
           } />
         </main>
+        <br></br>
+        <br></br>
       </div>
     )
   };
