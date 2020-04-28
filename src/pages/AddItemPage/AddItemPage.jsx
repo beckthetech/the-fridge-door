@@ -10,7 +10,7 @@ class AddItemPage extends Component {
             categories: '',
             description: '',
             price: '',
-            city: '',
+            city: this.props.city,
             contactInfo: '',
             imageLink: ''
         }
@@ -85,6 +85,7 @@ class AddItemPage extends Component {
                             value={this.state.formData.city}
                             onChange={this.handleChange}
                             required
+                            // defaultValue={this.props.city}
                         />
                     </div>
                     <div className="form-group">

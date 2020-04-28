@@ -90,7 +90,7 @@ class App extends Component {
           } />
           <Route exact path='/add' render={() =>
             userService.getUser() ?
-              <AddItemPage handleAddItem={this.handleAddItem}
+              <AddItemPage handleAddItem={this.handleAddItem} city={this.state.user.city}
               />
               :
               <Redirect to='/login' />
