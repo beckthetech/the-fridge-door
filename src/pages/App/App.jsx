@@ -12,6 +12,7 @@ import AddPostPopUp from '../AddPostPopUp/AddPostPopUp';
 import PostDetailPopUp from '../PostDetailPopUp/PostDetailPopUp';
 import EditPostPopUp from '../EditPostPopUp/EditPostPopUp';
 import LandingPage from '../../pages/LandingPage/LandingPage';
+import FAQPage from '../../pages/FAQ/FAQ';
 
 
 class App extends Component {
@@ -74,6 +75,7 @@ class App extends Component {
           <nav>
             {this.state.user && <NavLink exact to='/index'>Class Fridge</NavLink>}&nbsp;&nbsp;&nbsp;
             {this.state.user && <NavLink to='/add'>New Magnet</NavLink>}
+            {this.state.user && <NavLink to='/faq'>FAQs</NavLink>}
           </nav>
         </header>
         <main>
@@ -112,6 +114,9 @@ class App extends Component {
               history={history}
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
+          } />
+          <Route exact path='/faq' render={() =>
+            <FAQPage />
           } />
         </main>
         <br></br>
