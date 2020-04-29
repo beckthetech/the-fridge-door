@@ -10,7 +10,8 @@ const postSchema = new Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     classroom: { type: mongoose.Schema.Types.ObjectId, ref: 'Classroom' },
     comments: [commentSchema],
-    content: String
+    content: String,
+    tags: []
 }, { timestamps: true });
 
 module.exports = mongoose.model('Classroom', postSchema);

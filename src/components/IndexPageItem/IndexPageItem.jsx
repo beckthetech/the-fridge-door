@@ -1,21 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './GearListItem.css'
+import './IndexPageItem.css'
 
-function GearListItem({ item }) {
+function IndexPageItem({ post }) {
     return (
-        <div className="GearListItem">
+        <div className="IndexPageItem">
             <div>
-                <h3>{item.name}</h3>
-                <h5>{item.city}</h5>
-                <h5>${item.price}</h5>
+                <h5>{post.content}</h5>
+                <h5>${post.tag}</h5>
             </div>
-            <div className="gearListItem-detail-link">
+            <div className="IndexPageItem-detail-link">
                 <Link
                     to={{
                         pathname: '/details',
-                        state: { item }
+                        state: { post }
                     }}
                 >
                     DETAILS
@@ -25,4 +24,4 @@ function GearListItem({ item }) {
     );
 }
 
-export default GearListItem;
+export default IndexPageItem;
