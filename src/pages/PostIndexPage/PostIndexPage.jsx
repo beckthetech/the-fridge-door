@@ -1,9 +1,9 @@
 import React from 'react';
 import IndexPageItem from '../../components/IndexPageItem/IndexPageItem';
 
-import './ItemListPage.css'
+import './PostIndexPage.css'
 
-function ItemListPage(props) {
+function PostIndexPage(props) {
     return (
         <>
             <h1 className="marketplace-title">Class Fridge</h1>
@@ -11,7 +11,7 @@ function ItemListPage(props) {
             <br />
             <br />
             <div className='GearListPage-grid'>
-                {props.posts.map(post =>
+                {props.posts || props.posts.map(post =>
                     <IndexPageItem post={post} key={post._id} />
                 )}
             </div>
@@ -19,4 +19,4 @@ function ItemListPage(props) {
     );
 }
 
-export default ItemListPage;
+export default PostIndexPage;

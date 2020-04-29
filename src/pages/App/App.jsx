@@ -59,7 +59,8 @@ class App extends Component {
 
   async componentDidMount() {
     const posts = await postsApi.getAll();
-    this.setState({ posts });
+    console.log(posts)
+    if (posts) this.setState({ posts });
   }
 
   render() {

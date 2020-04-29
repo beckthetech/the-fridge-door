@@ -7,6 +7,7 @@ class AddPostPopUp extends Component {
         invalidForm: true,
         formData: {
             tags: '',
+            name: '',
             content: ''
         }
     };
@@ -58,7 +59,7 @@ class AddPostPopUp extends Component {
                     <div className="form-group">
                         <label>Description</label>
                         <input className="form-control"
-                            name="description"
+                            name="content"
                             value={this.state.formData.content}
                             onChange={this.handleChange}
                             required
