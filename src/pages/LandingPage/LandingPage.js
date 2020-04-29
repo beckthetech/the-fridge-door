@@ -5,7 +5,7 @@ import Logo from '../../EquipT.png';
 const LandingPage = (props) => {
     const landingPage = props.user ?
         <div className="LandingPage">
-            <Link to='/marketplace' className="logo-link"><img src={Logo} className="logo" /></Link>
+            <Link to='/index' className="logo-link"><img src={Logo} className="logo" /></Link>
         </div>
         :
         <div className="LandingPage">

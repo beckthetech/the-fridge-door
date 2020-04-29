@@ -13,7 +13,7 @@ function PostDetailPopUp(props) {
         user={props.user}
         handleDeletePost={props.handleDeletePost}
       />
-      <Link to='/marketplace'>Close</Link>
+      <Link to='/index'>Close</Link>
     </>
   );
 }
