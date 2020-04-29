@@ -79,7 +79,6 @@ class App extends Component {
           </nav>
         </header>
         <main>
-          <Popup />
           <Route exact path='/' render={() =>
             <LandingPage user={this.state.user} />
           } />

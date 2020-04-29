@@ -2,16 +2,13 @@ import React from 'react';
 import PostCard from '../../components/PostCard/PostCard';
 import { Link } from 'react-router-dom';
 
-function PostDetailPopUp(props) {
-  console.log(props.props)
-  props = props.props;
-  const post = props.post;
+function PostDetailPopUp({ props }) {
   return (
     <>
       <h1>Item Details</h1>
       <PostCard
-        key={post._id}
-        post={post}
+        key={props.post._id}
+        post={props.post}
         user={props.user}
         handleDeletePost={props.handleDeletePost}
       />
