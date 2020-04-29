@@ -7,10 +7,9 @@ class SignupForm extends Component {
   state = {
     name: '',
     email: '',
-    city: '',
-    contactInfo: '',
     password: '',
-    passwordConf: ''
+    passwordConf: '',
+    accountType: '',
   };
 
   handleChange = (e) => {
@@ -36,7 +35,7 @@ class SignupForm extends Component {
   }
 
   isFormInvalid() {
-    return !(this.state.name && this.state.email && this.state.city && this.state.password === this.state.passwordConf);
+    return !(this.state.name && this.state.email && this.state.accountType && this.state.password === this.state.passwordConf);
   }
 
   render() {
@@ -56,12 +55,7 @@ class SignupForm extends Component {
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder="City" value={this.state.city} name="city" onChange={this.handleChange} />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder="Contact Info" value={this.state.contactInfo} name="contactInfo" onChange={this.handleChange} />
+              <input type="text" className="form-control" placeholder="Account Type" value={this.state.accountType} name="accountType" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">

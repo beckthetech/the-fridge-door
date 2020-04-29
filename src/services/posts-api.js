@@ -1,34 +1,34 @@
-import tokenService from '../../src/utils/tokenService';
+import tokenService from '../utils/tokenService';
 
-const BASE_URL = '/api/items';
+const BASE_URL = '/api/posts';
 
 export function getAll() {
     return fetch(BASE_URL)
         .then(res => res.json());
 }
 
-export function create(item) {
+export function create(post) {
     const options = {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
             'Authorization': 'Bearer ' + tokenService.getToken()
         },
-        body: JSON.stringify(item)
+        body: JSON.stringify(post)
     };
     return fetch(BASE_URL, options).then(res => res.json());
 }
 
-export function update(item) {
+export function update(post) {
     const options = {
         method: 'PUT',
         headers: {
             'Content-type': 'application/json',
             'Authorization': 'Bearer ' + tokenService.getToken()
         },
-        body: JSON.stringify(item)
+        body: JSON.stringify(post)
     };
-    return fetch(`${BASE_URL}/${item._id}`, options).then(res => res.json());
+    return fetch(`${BASE_URL}/${post._id}`, options).then(res => res.json());
 }
 
 export function deleteOne(id) {

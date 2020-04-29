@@ -8,9 +8,10 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, required: true, lowercase: true, unique: true },
   password: String,
-  city: String,
-  contactInfo: String,
-  itemsForSale: [{ type: mongoose.Schema.Types.ObjectId, ref: 'RentableItems' }],
+  accountType: String,
+  classroom: { type: mongoose.Schema.Types.ObjectId, ref: 'Classroom' },
+  savedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+  createdPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
 }, {
   timestamps: true
 });
