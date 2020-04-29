@@ -13,7 +13,7 @@ function IndexPageItem({ post }) {
             <div className="IndexPageItem-detail-link">
                 <Link
                     to={{
-                        pathname: '/details',
+                        pathname: '/detail',
                         state: { post }
                     }}
                 >

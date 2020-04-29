@@ -16,6 +16,9 @@ function PostCard({ post, handleDeletePost, user }) {
                 </div>
                 <div className="panel-body">
                     <dl>
+                        <dt>Name: </dt> <dd>{post.name}</dd>
+                    </dl>
+                    <dl>
                         <dt>Categories: </dt> <dd>{tags}</dd>
                     </dl>
                     <dl>

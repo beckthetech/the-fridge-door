@@ -11,7 +11,7 @@ function PostIndexPage(props) {
             <br />
             <br />
             <div className='GearListPage-grid'>
-                {props.posts || props.posts.map(post =>
+                {props.posts.map(post =>
                     <IndexPageItem post={post} key={post._id} />
                 )}
             </div>

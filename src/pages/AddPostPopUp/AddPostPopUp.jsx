@@ -16,7 +16,7 @@ class AddPostPopUp extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.handleAddItem(this.state.formData);
+        this.props.handleAddPost(this.state.formData);
     }
 
     handleChange = e => {

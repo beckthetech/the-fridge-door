@@ -31,6 +31,7 @@ class App extends Component {
 
   handleAddPost = async newPostData => {
     const newPost = await postsApi.create(newPostData);
+    console.log(this.state.posts)
     this.setState(state => ({
       posts: [...state.posts, newPost]
     }),
@@ -59,8 +60,7 @@ class App extends Component {
 
   async componentDidMount() {
     const posts = await postsApi.getAll();
-    console.log(posts)
-    if (posts) this.setState({ posts });
+    this.setState({ posts });
   }
 
   render() {
