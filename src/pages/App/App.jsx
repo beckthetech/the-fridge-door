@@ -2,22 +2,21 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, NavLink, Redirect } from 'react-router-dom';
 
-import * as itemsAPI from '../../services/items-api';
+import * as postsApi from '../../services/posts-api';
 import userService from '../../utils/userService';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import NavBar from '../../components/NavBar/NavBar';
-import ItemListPage from '../ItemListPage/ItemListPage';
-import AddItemPage from '../AddItemPage/AddItemPage';
-import ItemDetailPage from '../ItemDetailPage/ItemDetailPage';
-import EditItemPage from '../EditItemPage/EditItemPage';
+import PostIndexPage from '../PostIndexPage/PostIndexPage';
+import AddPostPopUp from '../AddPostPopUp/AddPostPopUp';
+import PostDetailPopUp from '../PostDetailPopUp/PostDetailPopUp';
+import EditPostPopUp from '../EditPostPopUp/EditPostPopUp';
 import LandingPage from '../../pages/LandingPage/LandingPage';
 
 
 class App extends Component {
   state = {
-    items: [],
-    choices: [],
+    posts: [],
     user: userService.getUser(),
   };
 
@@ -30,37 +29,37 @@ class App extends Component {
     this.setState({ user: null });
   }
 
-  handleAddItem = async newItemData => {
-    const newItem = await itemsAPI.create(newItemData);
+  handleAddPost = async newPostData => {
+    const newPost = await postsApi.create(newPostData);
     this.setState(state => ({
-      items: [...state.items, newItem]
+      posts: [...state.posts, newPost]
     }),
-      () => this.props.history.push('/marketplace'));
+      () => this.props.history.push('/index'));
   }
 
-  handleUpdateItem = async updatedItemData => {
-    const updatedItem = await itemsAPI.update(updatedItemData);
-    const newItemsArray = this.state.items.map(e =>
-      e._id === updatedItem._id ? updatedItem : e
+  handleUpdatePost = async updatedItemPost => {
+    const updatedPost = await postsApi.update(updatedItemPost);
+    const newPostsArray = this.state.posts.map(post =>
+      post._id === updatedPost._id ? updatedPost : post
     );
     this.setState(
-      { items: newItemsArray },
-      () => this.props.history.push('/marketplace')
+      { posts: newPostsArray },
+      () => this.props.history.push('/index')
     );
   }
 
-  handleDeleteItem = async id => {
-    await itemsAPI.deleteOne(id);
+  handleDeletePost = async id => {
+    await postsApi.deleteOne(id);
     this.setState(state => ({
-      items: state.items.filter(item => item._id !== id)
-    }), () => this.props.history.push('/marketplace'));
+      posts: state.posts.filter(post => post._id !== id)
+    }), () => this.props.history.push('/index'));
   }
 
   // Lifecycle Methods
 
   async componentDidMount() {
-    const items = await itemsAPI.getAll();
-    this.setState({ items });
+    const posts = await postsApi.getAll();
+    this.setState({ posts });
   }
 
   render() {
@@ -72,32 +71,32 @@ class App extends Component {
             handleLogout={this.handleLogout}
           />
           <nav>
-            {this.state.user && <NavLink exact to='/marketplace'>Marketplace</NavLink>}&nbsp;&nbsp;&nbsp;
-            {this.state.user && <NavLink to='/add'>List Item</NavLink>}
+            {this.state.user && <NavLink exact to='/index'>Class Fridge</NavLink>}&nbsp;&nbsp;&nbsp;
+            {this.state.user && <NavLink to='/add'>New Magnet</NavLink>}
           </nav>
         </header>
         <main>
           <Route exact path='/' render={() =>
-            <LandingPage user={this.state.user}/>
+            <LandingPage user={this.state.user} />
           } />
-          <Route exact path='/marketplace' render={() =>
-            <ItemListPage
-              items={this.state.items}
+          <Route exact path='/index' render={() =>
+            <PostIndexPage
+              posts={this.state.posts}
             />
           } />
-          <Route exact path='/details' render={({ location }) =>
-            <ItemDetailPage location={location} handleDeleteItem={this.handleDeleteItem} user={this.state.user} />
+          <Route exact path='/detail' render={({ location }) =>
+            <PostDetailPopUp location={location} handleDeletePost={this.handleDeletePost} user={this.state.user} />
           } />
           <Route exact path='/add' render={() =>
             userService.getUser() ?
-              <AddItemPage handleAddItem={this.handleAddItem} city={this.state.user.city}
+              <AddPostPopUp handleAddPost={this.handleAddPost}
               />
               :
               <Redirect to='/login' />
           } />
           <Route exact path='/edit' render={({ location }) =>
             userService.getUser() ?
-              <EditItemPage handleUpdateItem={this.handleUpdateItem} location={location} user={this.state.user}
+              <EditPostPopUp handleUpdatePost={this.handleUpdatePost} location={location} user={this.state.user}
               />
               :
               <Redirect to='/login' />

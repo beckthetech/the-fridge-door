@@ -71,14 +71,14 @@ class EditPostPopUp extends Component {
                     >
                         Save Magnet
                     </button>&nbsp;&nbsp;
-                    <Link to='/marketplace'>Cancel</Link>
+                    <Link to='/index'>Cancel</Link>
                 </form>
             </>
         )
     }
 
     render() {
-        return this.state.formData ? this.renderEditPostForm() : <Redirect to='/marketplace' />;
+        return this.state.formData ? this.renderEditPostForm() : <Redirect to='/index' />;
     }
 }
 

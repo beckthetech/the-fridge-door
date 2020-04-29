@@ -17,7 +17,7 @@ app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 // api routes before "catch all"
 app.use('/api/users', require('./routes/api/users'));
 app.use(require('./config/auth'));
-app.use('/api/classrooms', require('./routes/api/classrooms'));
+// app.use('/api/classrooms', require('./routes/api/classrooms'));
 app.use('/api/posts', require('./routes/api/posts'));
 
 // "catch all" route
