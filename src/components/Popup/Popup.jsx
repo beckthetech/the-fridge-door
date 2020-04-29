@@ -6,9 +6,20 @@ const Modal = ({ props }) => (
   <Popup
     trigger={<button className="button"> Open Modal </button>}
     modal
-    closeOnDocumentClick
   >
-    <span> <PostDetailPopUp props={props} /> </span>
+    {close => (
+      <>
+        <PostDetailPopUp props={props} />
+        <button
+          className="button"
+          onClick={() => {
+            close();
+          }}
+        >
+          Close
+          </button>
+      </>
+    )}
   </Popup>
 );
 

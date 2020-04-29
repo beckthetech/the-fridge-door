@@ -10,17 +10,7 @@ function IndexPageItem(props) {
         <div className="IndexPageItem">
             <div>
                 <h5>{post.content}</h5>
-                <h5>${post.tag}</h5>
-            </div>
-            <div className="IndexPageItem-detail-link">
-                <Link
-                    to={{
-                        pathname: '/detail',
-                        state: { post }
-                    }}
-                >
-                    DETAILS
-                </Link>
+                <h5>{post.tag}</h5>
             </div>
             <Popup props={props}/>
         </div>

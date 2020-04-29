@@ -12,7 +12,6 @@ function PostDetailPopUp({ props }) {
         user={props.user}
         handleDeletePost={props.handleDeletePost}
       />
-      <Link to='/index'>Close</Link>
     </>
   );
 }
