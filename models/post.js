@@ -8,6 +8,7 @@ const commentSchema = new Schema({
 
 const postSchema = new Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    name: String,
     classroom: { type: mongoose.Schema.Types.ObjectId, ref: 'Classroom' },
     comments: [commentSchema],
     content: String,

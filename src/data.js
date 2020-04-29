@@ -1,4 +1,4 @@
-const itemCategories = [
+const tags = [
   { value: 'math', label: 'Math' },
   { value: 'science', label: 'Science' },
   { value: 'reading', label: 'Reading' },
@@ -11,4 +11,4 @@ const itemCategories = [
   { value: 'history', label: 'History' },
 ]
 
-export default itemCategories;
+export default tags;
