@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
+import { Link, Redirect } from 'react-router-dom';
 import tags from '../../data';
 
-class AddPostPopUp extends Component {
+class EditPostPopUp extends Component {
     state = {
         invalidForm: true,
-        formData: {
-            tags: '',
-            content: ''
-        }
+        formData: this.props.location.state ? this.props.location.state.post : null
     };
 
     formRef = React.createRef();
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.handleAddItem(this.state.formData);
+        this.props.handleUpdateItem(this.state.formData);
     }
 
     handleChange = e => {
@@ -27,13 +25,16 @@ class AddPostPopUp extends Component {
     };
 
     handleChangeTags = tags => {
-        this.setState({ formData: { ...this.state.formData, tags } });
+        this.setState({
+            formData: { ...this.state.formData, tags },
+            invalidForm: !this.formRef.current.checkValidity()
+        });
     }
 
-    render() {
+    renderEditPostForm() {
         return (
             <>
-                <h1>Add Magnet</h1>
+                <h1>Edit Magnet</h1>
                 <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label>Name</label>
@@ -55,7 +56,7 @@ class AddPostPopUp extends Component {
                             required
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group description-input-div">
                         <label>Description</label>
                         <input className="form-control"
                             name="description"
@@ -68,12 +69,18 @@ class AddPostPopUp extends Component {
                         type="submit"
                         disabled={this.state.invalidForm}
                     >
-                        Add Magnet
-                    </button>
+                        Save Magnet
+                    </button>&nbsp;&nbsp;
+                    <Link to='/marketplace'>Cancel</Link>
                 </form>
             </>
-        );
+        )
+    }
+
+    render() {
+        return this.state.formData ? this.renderEditPostForm() : <Redirect to='/marketplace' />;
     }
 }
 
-export default AddPostPopUp;
+
+export default EditPostPopUp;

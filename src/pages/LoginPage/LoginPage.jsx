@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './LoginPage.css';
 import userService from '../../utils/userService';
+import './LoginPage.css';
 
 class LoginPage extends Component {
-  
+
   state = {
     email: '',
     pw: ''
