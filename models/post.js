@@ -15,4 +15,4 @@ const postSchema = new Schema({
     tags: []
 }, { timestamps: true });
 
-module.exports = mongoose.model('Classroom', postSchema);
+module.exports = mongoose.model('Post', postSchema);
