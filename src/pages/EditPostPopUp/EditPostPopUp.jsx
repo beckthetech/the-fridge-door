@@ -13,7 +13,7 @@ class EditPostPopUp extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.handleUpdateItem(this.state.formData);
+        this.props.handleUpdatePost(this.state.formData);
     }
 
     handleChange = e => {
@@ -59,7 +59,7 @@ class EditPostPopUp extends Component {
                     <div className="form-group description-input-div">
                         <label>Description</label>
                         <input className="form-control"
-                            name="description"
+                            name="content"
                             value={this.state.formData.content}
                             onChange={this.handleChange}
                             required
