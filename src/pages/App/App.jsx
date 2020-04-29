@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, NavLink, Redirect } from 'react-router-dom';
-
 import * as postsApi from '../../services/posts-api';
 import userService from '../../utils/userService';
 import SignupPage from '../SignupPage/SignupPage';
@@ -13,6 +12,7 @@ import PostDetailPopUp from '../PostDetailPopUp/PostDetailPopUp';
 import EditPostPopUp from '../EditPostPopUp/EditPostPopUp';
 import LandingPage from '../../pages/LandingPage/LandingPage';
 import FAQPage from '../../pages/FAQ/FAQ';
+import Popup from '../../components/Popup/Popup';
 
 
 class App extends Component {
@@ -79,12 +79,14 @@ class App extends Component {
           </nav>
         </header>
         <main>
+          <Popup />
           <Route exact path='/' render={() =>
             <LandingPage user={this.state.user} />
           } />
           <Route exact path='/index' render={() =>
             <PostIndexPage
               posts={this.state.posts}
+              user={this.state.user}
             />
           } />
           <Route exact path='/detail' render={({ location }) =>

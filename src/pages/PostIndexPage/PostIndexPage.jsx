@@ -4,6 +4,7 @@ import IndexPageItem from '../../components/IndexPageItem/IndexPageItem';
 import './PostIndexPage.css'
 
 function PostIndexPage(props) {
+    console.log(props)
     return (
         <>
             <h1 className="marketplace-title">Class Fridge</h1>
@@ -12,7 +13,13 @@ function PostIndexPage(props) {
             <br />
             <div className='GearListPage-grid'>
                 {props.posts.map(post =>
-                    <IndexPageItem post={post} key={post._id} />
+                    <IndexPageItem
+                    post={post}
+                    key={post._id}
+                    location={props.location}
+                    handleDeletePost={props.handleDeletePost}
+                    user={props.user}
+                    />
                 )}
             </div>
         </>

@@ -3,7 +3,9 @@ import PostCard from '../../components/PostCard/PostCard';
 import { Link } from 'react-router-dom';
 
 function PostDetailPopUp(props) {
-  const post = props.location.state.post;
+  console.log(props.props)
+  props = props.props;
+  const post = props.post;
   return (
     <>
       <h1>Item Details</h1>

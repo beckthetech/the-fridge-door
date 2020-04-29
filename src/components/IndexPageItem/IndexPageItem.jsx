@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Popup from '../../components/Popup/Popup';
 
 import './IndexPageItem.css'
 
-function IndexPageItem({ post }) {
+function IndexPageItem(props) {
+    const post = props.post;
     return (
         <div className="IndexPageItem">
             <div>
@@ -20,6 +22,7 @@ function IndexPageItem({ post }) {
                     DETAILS
                 </Link>
             </div>
+            <Popup props={props}/>
         </div>
     );
 }
