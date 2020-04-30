@@ -110,7 +110,7 @@ class App extends Component {
           <Route exact path='/myindex' render={({ location }) =>
             <PostIndexPage
               pagename={`${this.state.user.name}'s Fridge`}
-              posts={this.state.posts}
+              posts={this.state.savedPosts}
               user={this.state.user}
               handleDeletePost={this.handleDeletePost}
               handleUpdatePost={this.handleUpdatePost}
