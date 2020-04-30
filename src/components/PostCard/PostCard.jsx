@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../utils/userService';
+import Popup from 'reactjs-popup';
+import EditPostPopUp from '../../pages/EditPostPopUp/EditPostPopUp';
 
 import './PostCard.css'
 
-function PostCard({ post, handleDeletePost, user }) {
+function PostCard({ post, handleDeletePost, user, handleUpdatePost, location }) {
     user = user === null ? user = NaN : user;
     const tags = post.tags.map((tag, idx) =>
         <span key={tag.value}>{idx !== 0 ? ', ' : ''}{tag.label}</span>)
