@@ -11,7 +11,7 @@ module.exports = {
 }
 
 async function index(req, res) {
-    const posts = await Post.find({ classroom: req.user.classroom });
+    const posts = await Post.find({});
     res.status(200).json(posts);
 }
 
@@ -26,6 +26,7 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
+    console.log(req.user)
     req.body.user = req.user;
     req.body.classroom = req.user.classroom;
     const post = await Post.create(req.body);
