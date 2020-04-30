@@ -18,13 +18,15 @@ async function makeClassroom(reqBody) {
   return classroom._id;
 }
 
-// setClassroom(reqBody) {
-
-// }
+async function setClassroom(reqBody) {
+  const classroom = await Classroom.findOne({ classroomCode: reqBody.classroomCode });
+  return classroom._id
+}
 
 async function signup(req, res) {
-  // req.body.accountType === 'teacher' ? makeClassroom(req.body) : setClassroom(req.body);
-  req.body.classroom = await makeClassroom(req.body)
+  req.body.classroom = req.body.accountType === 'teacher'
+    ? await makeClassroom(req.body)
+    : await setClassroom(req.body);
   const user = new User(req.body);
   try {
     await user.save();
