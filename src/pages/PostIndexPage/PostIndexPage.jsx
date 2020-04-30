@@ -6,13 +6,14 @@ import './PostIndexPage.css'
 function PostIndexPage(props) {
     return (
         <>
-            <h1 className="marketplace-title">Class Fridge</h1>
+            <h1 className="marketplace-title">{props.pagename}</h1>
             <br />
             <br />
             <br />
             <div className='GearListPage-grid'>
                 {props.posts.map(post =>
                     <IndexPageItem
+                    handleAddSaved={props.handleAddSaved}
                     post={post}
                     key={post._id}
                     handleDeletePost={props.handleDeletePost}

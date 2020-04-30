@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
   password: String,
   accountType: String,
   classroom: { type: mongoose.Schema.Types.ObjectId, ref: 'Classroom' },
+  classroomName: String,
   savedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
   createdPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
 }, {
