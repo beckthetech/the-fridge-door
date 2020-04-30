@@ -1,28 +1,27 @@
-.LoginPage {
+.signup-page {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
 }
-
 .logo { 
   margin-top: 10%;
+  /* padding-bottom: 30%; */
 }
 
-.login-card  {
-  border: solid grey 1px;
+.signup-right > header{ 
+  margin: 5%;
+  font-size: 36px;
+  font-weight: 500;
+  text-align: center;
 }
 
-.login-card > header{ 
-margin: 5%;
-font-size: 36px;
-font-weight: 500;
-text-align: center;
-}
-
-.login-button{ 
-  background-color: #00B4F7;
+.signup-button{ 
+  background-color: #FF453C;
+  border-radius: 5px;
+  color: white;
+  width: 150px;
 }
 
 .sign-up-link { 
@@ -32,10 +31,12 @@ text-align: center;
   color: #FF453C;
 }
 
-.login-right {
+.signup-right {
+  border: solid grey 1px;
   display: flex;
   flex-flow: column wrap;
   max-width: 300px;
+  margin-top: 60px;
 }
 .login-text { 
   display: inline;
