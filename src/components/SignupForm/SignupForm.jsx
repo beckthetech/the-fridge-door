@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Select from "react-select";
 import userService from '../../utils/userService';
+import accountTypes from '../../accountTypes';
 
 class SignupForm extends Component {
 
   state = {
     name: '',
     email: '',
+    accountType: '',
     password: '',
     passwordConf: '',
-    accountType: '',
+    classroomCode: ''
+    // `${this.classroomCodeText()} Classroom Code`
   };
+
+  handleChangeAccType = value => {
+    this.setState({ accountType: value.value } );
+  }
 
   handleChange = (e) => {
     this.props.updateMessage('');
@@ -35,7 +43,11 @@ class SignupForm extends Component {
   }
 
   isFormInvalid() {
-    return !(this.state.name && this.state.email && this.state.accountType && this.state.password === this.state.passwordConf);
+    return !(this.state.name && this.state.email && this.state.classroomCode && this.state.password === this.state.passwordConf);
+  }
+
+  classroomCodeText() {
+    return this.state.accountType === 'parent' ? '' : 'Create ';
   }
 
   render() {
@@ -55,7 +67,12 @@ class SignupForm extends Component {
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder="Account Type" value={this.state.accountType} name="accountType" onChange={this.handleChange} />
+              <Select
+                name="accountType"
+                onChange={this.handleChangeAccType}
+                options={accountTypes}
+                required
+              />
             </div>
           </div>
           <div className="form-group">
@@ -66,6 +83,11 @@ class SignupForm extends Component {
           <div className="form-group">
             <div className="col-sm-12">
               <input type="password" className="form-control" placeholder="Confirm Password" value={this.state.passwordConf} name="passwordConf" onChange={this.handleChange} />
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="col-sm-12">
+              <input type="text" className="form-control" placeholder={`${this.classroomCodeText()}Classroom Code`} value={this.state.classroomCode} name="code" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">

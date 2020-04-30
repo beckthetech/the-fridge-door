@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import { Link, Redirect } from 'react-router-dom';
 import tags from '../../data';
+import Popup from 'reactjs-popup';
 
 class EditPostPopUp extends Component {
     state = {

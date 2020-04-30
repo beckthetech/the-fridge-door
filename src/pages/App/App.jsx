@@ -13,6 +13,7 @@ import EditPostPopUp from '../EditPostPopUp/EditPostPopUp';
 import LandingPage from '../../pages/LandingPage/LandingPage';
 import FAQPage from '../../pages/FAQ/FAQ';
 import Popup from '../../components/Popup/Popup';
+import * as Data from '../../data';
 
 
 class App extends Component {
@@ -57,6 +58,13 @@ class App extends Component {
     }), () => this.props.history.push('/index'));
   }
 
+  filterPosts(posts) {
+    const postsArr = posts.filter(post =>
+      post.user === this.state.user._id
+    )
+    return postsArr;
+  }
+
   // Lifecycle Methods
 
   async componentDidMount() {
@@ -74,22 +82,39 @@ class App extends Component {
           />
           <nav>
             {this.state.user && <NavLink exact to='/index'>Class Fridge</NavLink>}&nbsp;&nbsp;&nbsp;
-            {this.state.user && <NavLink to='/add'>New Magnet</NavLink>}
-            {this.state.user && <NavLink to='/faq'>FAQs</NavLink>}
+            {this.state.user && <NavLink exact to='/myindex'>My Fridge</NavLink>}&nbsp;&nbsp;&nbsp;
+            {this.state.user && <NavLink to='/add'>New Magnet</NavLink>}&nbsp;&nbsp;&nbsp;
+            {this.state.user && <NavLink to='/faq'>FAQs</NavLink>}&nbsp;&nbsp;&nbsp;
           </nav>
         </header>
         <main>
           <Route exact path='/' render={() =>
             <LandingPage user={this.state.user} />
           } />
-          <Route exact path='/index' render={() =>
+          <Route exact path='/index' render={({ location }) =>
             <PostIndexPage
               posts={this.state.posts}
               user={this.state.user}
+              handleDeletePost={this.handleDeletePost}
+              handleUpdatePost={this.handleUpdatePost}
+              location={location}
+            />
+          } />
+          <Route exact path='/myindex' render={({ location }) =>
+            <PostIndexPage
+              posts={this.filterPosts(this.state.posts)}
+              user={this.state.user}
+              handleDeletePost={this.handleDeletePost}
+              handleUpdatePost={this.handleUpdatePost}
+              location={location}
             />
           } />
           <Route exact path='/detail' render={({ location }) =>
-            <PostDetailPopUp location={location} handleDeletePost={this.handleDeletePost} user={this.state.user} />
+            <PostDetailPopUp
+              location={location}
+              handleDeletePost={this.handleDeletePost}
+              user={this.state.user}
+            />
           } />
           <Route exact path='/add' render={() =>
             userService.getUser() ?
