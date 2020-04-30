@@ -3,10 +3,11 @@ import Popup from "reactjs-popup";
 import PostDetailPopUp from '../../pages/PostDetailPopUp/PostDetailPopUp'
 import AddPostPopUp from '../../pages/AddPostPopUp/AddPostPopUp';
 import EditPostPopUp from '../../pages/EditPostPopUp/EditPostPopUp';
+import './Popup.css';
 
 const Modal = ({ props }) => (
   <Popup
-    trigger={<button className="button"> Details </button>}
+    trigger={<button className="button pop-button"> Details </button>}
     modal
   >
     {close => (

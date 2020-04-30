@@ -8,11 +8,17 @@ function IndexPageItem(props) {
     const post = props.post;
     return (
         <div className="IndexPageItem">
-            <div>
-                <h5>{post.content}</h5>
-                <h5>{post.tag}</h5>
+            <div className="index-page-card">
+                <div className='index-card-row-1'>
+                    <div className="card-name">
+                        <span>{post.name}</span>
+                    </div>
+                </div>
+                <div className="card-content">
+                    <span>{post.content}</span>
+                    <Popup props={props} />
+                </div>
             </div>
-            <Popup props={props}/>
         </div>
     );
 }
