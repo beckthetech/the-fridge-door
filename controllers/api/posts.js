@@ -35,9 +35,10 @@ async function create(req, res) {
 
 async function addSavedPost(req, res) {
     const newSavedPost = await Post.findById(req.params.id);
-    await User.findByIdAndUpdate(req.user._id, 
+    await User.findByIdAndUpdate(req.user._id,
         { $push: { savedPosts: newSavedPost } },
-        { safe: true, upsert: true })
+        { safe: true, upsert: true });
+    res.status(201).json(newSavedPost);
 }
 
 async function update(req, res) {
