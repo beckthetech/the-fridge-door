@@ -41,11 +41,14 @@ class App extends Component {
   }
 
   handleAddSaved = async newSavedData => {
-    const newSavedPost = await postsApi.savePost(newSavedData);
-    this.setState(state => ({
+    console.log('here')
+    const newSavedPost = await postsApi.savePost(newSavedData)
+    console.log(newSavedPost);
+    (this.setState(state => ({
       savedPosts: [...state.savedPosts, newSavedPost]
     }),
-      () => this.props.history.push('/myindex'));
+      () => this.props.history.push('/myindex')));
+    (console.log(this.state.savedPosts))
   }
 
   handleUpdatePost = async updatedItemPost => {
@@ -67,11 +70,14 @@ class App extends Component {
   }
 
   filterPosts(user, posts) {
-    /* console.log('filterposts') */
+    // console.log(posts)
+    // console.log(user)
     const postsArr = posts.filter(post =>
       user.savedPosts.includes(post._id)
     )
+    // console.log(postsArr)
     this.setState({ savedPosts: postsArr });
+    // console.log(this.state.savedPosts)
   }
 
   // Lifecycle Methods
