@@ -1,14 +1,34 @@
 const User = require('../../models/user');
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
+const Classroom = require('../../models/classroom');
 
 module.exports = {
   signup,
   login
 };
 
+async function makeClassroom(reqBody) {
+  const classBody = {
+    name: `${reqBody.name}'s Classroom`,
+    classroomCode: reqBody.classroomCode
+  }
+  console.log('classbody', classBody)
+  const classroom = await Classroom.create(classBody);
+  classroom.save();
+  console.log('classroom', classroom._id)
+  return classroom._id;
+}
+
+// setClassroom(reqBody) {
+
+// }
+
 async function signup(req, res) {
+  // req.body.accountType === 'teacher' ? makeClassroom(req.body) : setClassroom(req.body);
+  req.body.classroom = await makeClassroom(req.body)
   const user = new User(req.body);
+  console.log('user', user)
   try {
     await user.save();
     const token = createJWT(user);
@@ -21,14 +41,14 @@ async function signup(req, res) {
 
 async function login(req, res) {
   try {
-    const user = await User.findOne({email: req.body.email});
-    if (!user) return res.status(401).json({err: 'bad credentials'});
+    const user = await User.findOne({ email: req.body.email });
+    if (!user) return res.status(401).json({ err: 'bad credentials' });
     user.comparePassword(req.body.pw, (err, isMatch) => {
       if (isMatch) {
         const token = createJWT(user);
-        res.json({token});
+        res.json({ token });
       } else {
-        return res.status(401).json({err: 'bad credentials'});
+        return res.status(401).json({ err: 'bad credentials' });
       }
     });
   } catch (err) {
@@ -40,8 +60,8 @@ async function login(req, res) {
 
 function createJWT(user) {
   return jwt.sign(
-    {user}, // data payload
+    { user }, // data payload
     SECRET,
-    {expiresIn: '24h'}
+    { expiresIn: '24h' }
   );
 }
