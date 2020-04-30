@@ -7,7 +7,7 @@ const classroomSchema = new Schema({
     posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
     parents: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     teacher: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    code: String
+    classroomCode: String
 }, { timestamps: true });
 
 module.exports = mongoose.model('Classroom', classroomSchema);
