@@ -10,23 +10,27 @@ module.exports = {
 
 async function makeClassroom(reqBody) {
   const classBody = {
-    name: `${reqBody.name}'s Classroom`,
+    name: `${reqBody.name}'s Class`,
     classroomCode: reqBody.classroomCode
   }
   const classroom = await Classroom.create(classBody);
   classroom.save();
-  return classroom._id;
+  return classroom;
 }
 
 async function setClassroom(reqBody) {
   const classroom = await Classroom.findOne({ classroomCode: reqBody.classroomCode });
-  return classroom._id
+  return classroom;
 }
 
 async function signup(req, res) {
-  req.body.classroom = req.body.accountType === 'teacher'
+  const classroom = req.body.accountType === 'teacher'
     ? await makeClassroom(req.body)
     : await setClassroom(req.body);
+  console.log('classroom', classroom);
+  req.body.classroom = classroom._id;
+  req.body.classroomName = classroom.name;
+  console.log('req.body', req.body)
   const user = new User(req.body);
   try {
     await user.save();

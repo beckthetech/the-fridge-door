@@ -1,4 +1,5 @@
 const Post = require('../../models/post');
+const Classroom = require('../../models/classroom');
 
 module.exports = {
     index,
@@ -9,7 +10,7 @@ module.exports = {
 }
 
 async function index(req, res) {
-    const posts = await Post.find({});
+    const posts = await Post.find({ classroom: req.user.classroom });
     res.status(200).json(posts);
 }
 
@@ -20,6 +21,7 @@ async function show(req, res) {
 
 async function create(req, res) {
     req.body.user = req.user;
+    req.body.classroom = req.user.classroom;
     req.body.owner = req.user.name;
     const post = await Post.create(req.body);
     res.status(201).json(post);
