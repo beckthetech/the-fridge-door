@@ -28,7 +28,6 @@ async function show(req, res) {
 async function create(req, res) {
     req.body.user = req.user;
     req.body.classroom = req.user.classroom;
-    req.body.owner = req.user.name;
     const post = await Post.create(req.body);
     res.status(201).json(post);
 }

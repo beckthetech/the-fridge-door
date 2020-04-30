@@ -7,10 +7,10 @@ export function getAll() {
         .then(res => res.json());
 }
 
-export function getSavedPosts() {
-    return fetch(BASE_URL)
-        .then(res => res.json())
-}
+// export function getSavedPosts() {
+//     return fetch(BASE_URL)
+//         .then(res => res.json())
+// }
 
 export function create(post) {
     const options = {

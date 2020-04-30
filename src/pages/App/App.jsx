@@ -59,12 +59,12 @@ class App extends Component {
     }), () => this.props.history.push('/index'));
   }
 
-  filterPosts(posts) {
-    const postsArr = posts.filter(post =>
-      post.user === this.state.user._id
-    )
-    return postsArr;
-  }
+  // filterPosts(posts) {
+  //   const postsArr = posts.filter(post =>
+  //     post.user === this.state.user._id
+  //   )
+  //   return postsArr;
+  // }
 
   // Lifecycle Methods
 
@@ -73,10 +73,10 @@ class App extends Component {
     this.setState({ posts });
   }
 
-  async handleSavedPosts() {
-    const savedPosts = await postsApi.getSavedPosts();
-    this.setState({ savedPosts });
-  }
+  // async handleSavedPosts() {
+  //   const savedPosts = await postsApi.getSavedPosts();
+  //   this.setState({ savedPosts });
+  // }
 
   render() {
     return (
@@ -99,7 +99,7 @@ class App extends Component {
           } />
           <Route exact path='/index' render={({ location }) =>
             <PostIndexPage
-              pagename={`${this.state.user.classroomName}'s Fridge`}
+              pagename={`${this.state.user.classroomName} Fridge`}
               posts={this.state.posts}
               user={this.state.user}
               handleDeletePost={this.handleDeletePost}
@@ -110,7 +110,7 @@ class App extends Component {
           <Route exact path='/myindex' render={({ location }) =>
             <PostIndexPage
               pagename={`${this.state.user.name}'s Fridge`}
-              posts={this.filterPosts(this.state.posts)}
+              posts={this.state.savedPosts}
               user={this.state.user}
               handleDeletePost={this.handleDeletePost}
               handleUpdatePost={this.handleUpdatePost}
