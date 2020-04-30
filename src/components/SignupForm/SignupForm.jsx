@@ -11,11 +11,13 @@ class SignupForm extends Component {
     email: '',
     accountType: '',
     password: '',
-    passwordConf: ''
+    passwordConf: '',
+    classroomCode: ''
+    // `${this.classroomCodeText()} Classroom Code`
   };
 
-  handleChangeAccType = accountType => {
-    this.setState({ formData: { ...this.state.formData, accountType } });
+  handleChangeAccType = value => {
+    this.setState({ accountType: value.value } );
   }
 
   handleChange = (e) => {
@@ -41,7 +43,11 @@ class SignupForm extends Component {
   }
 
   isFormInvalid() {
-    return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
+    return !(this.state.name && this.state.email && this.state.classroomCode && this.state.password === this.state.passwordConf);
+  }
+
+  classroomCodeText() {
+    return this.state.accountType === 'parent' ? '' : 'Create ';
   }
 
   render() {
@@ -62,12 +68,11 @@ class SignupForm extends Component {
           <div className="form-group">
             <div className="col-sm-12">
               <Select
-                defaultValue={accountTypes[0]}
                 name="accountType"
-                onChange={(value) => this.setState(value)}
+                onChange={this.handleChangeAccType}
                 options={accountTypes}
                 required
-                />
+              />
             </div>
           </div>
           <div className="form-group">
@@ -78,6 +83,11 @@ class SignupForm extends Component {
           <div className="form-group">
             <div className="col-sm-12">
               <input type="password" className="form-control" placeholder="Confirm Password" value={this.state.passwordConf} name="passwordConf" onChange={this.handleChange} />
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="col-sm-12">
+              <input type="text" className="form-control" placeholder={`${this.classroomCodeText()}Classroom Code`} value={this.state.classroomCode} name="code" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">
