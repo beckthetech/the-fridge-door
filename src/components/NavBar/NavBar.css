@@ -1,9 +1,17 @@
 .NavBar {
   display: flex;
   justify-content: center;
-  margin: 50% 0 50% 10px;
+  margin: 50% 0px 50% 10px;
 }
 
 .NavBar-welcome {
   color: grey;
+}
+.title { 
+  color: black;
+  font-family: Avenir Next  ;
+  font-weight: 500;
+  padding-left: 180px;
+  font-size: 40px;
+  
 }
