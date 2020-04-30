@@ -105,7 +105,7 @@ class App extends Component {
         </header>
         <main>
           <Route exact path='/' render={() =>
-            <LandingPage user={this.state.user} />
+            <Redirect to='/login' />
           } />
           <Route exact path='/index' render={({ location }) =>
             <PostIndexPage

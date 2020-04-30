@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../../EquipT.png';
+import Logo from '../../fridge.png';
 
 const LandingPage = (props) => {
     const landingPage = props.user ?
