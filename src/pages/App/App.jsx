@@ -66,24 +66,21 @@ class App extends Component {
     }), () => this.props.history.push('/index'));
   }
 
-  // filterPosts(posts) {
-  //   const postsArr = posts.filter(post =>
-  //     post.user === this.state.user._id
-  //   )
-  //   return postsArr;
-  // }
+  filterPosts(user, posts) {
+    /* console.log('filterposts) */
+    const postsArr = posts.filter(post =>
+      user.savedPosts.includes(post._id)
+    )
+    this.setState({ savedPosts: postsArr });
+  }
 
   // Lifecycle Methods
 
   async componentDidMount() {
     const posts = await postsApi.getAll();
     this.setState({ posts });
+    this.filterPosts(this.state.user, posts)
   }
-
-  // async handleSavedPosts() {
-  //   const savedPosts = await postsApi.getSavedPosts();
-  //   this.setState({ savedPosts });
-  // }
 
   render() {
     return (
@@ -118,6 +115,7 @@ class App extends Component {
           <Route exact path='/myindex' render={({ location }) =>
             <PostIndexPage
               pagename={`${this.state.user.name}'s Fridge`}
+              // posts={this.filterPosts(this.state.user, this.state.posts)}
               posts={this.state.savedPosts}
               user={this.state.user}
               handleDeletePost={this.handleDeletePost}
