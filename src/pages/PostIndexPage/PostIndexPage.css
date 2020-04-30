@@ -1,19 +1,27 @@
-.GearListPage-grid {
+.magnet-page-grid {
     width: 80%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 20px;
+    align-items: center;
 }
 
-.marketplace-title {
+.fridge-title {
     font-family: monospace;
     font-style: normal;
-    font-weight: 900;
-    font-size: 55px;
-    
+    font-weight: 500;
+    font-size: 36px;
+    text-align: center;    
+}
+.magnet-index-page{
+    width: 1000px;
+    display: flex;
+    flex-flow: column ;
+    align-items: center;
 }
 
-.marketplace-copy {
+.index-copy {
     font-style: italic;
-    max-width: 85vw;
+    max-width: 500px;
+    text-align: center;
 }

@@ -1,10 +1,35 @@
 .IndexPageItem {
     border: solid black;
-    padding-left: 10px;
+    /* padding-left: 10px;
     padding-bottom: 15px;
-    padding-right: 10px;
+    padding-right: 10px; */
+    border-radius: 12px;
 }
 
 .IndexPageItem-detail-link {
     text-align: right;
 }
+
+.index-page-card {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column;
+    
+}
+.card-text{
+    justify-content: flex-start;
+}
+
+.card-content { 
+    justify-content: flex-end;
+    background-color: ivory;
+    border-radius: 12px;
+}
+
+.index-card-row-1 {
+    background-color: #FED201;
+    border-radius: 12px;
+    padding: 50px;
+}
+
+
