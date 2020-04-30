@@ -13,7 +13,6 @@ class SignupForm extends Component {
     password: '',
     passwordConf: '',
     classroomCode: ''
-    // `${this.classroomCodeText()} Classroom Code`
   };
 
   handleChangeAccType = value => {
@@ -87,7 +86,7 @@ class SignupForm extends Component {
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder={`${this.classroomCodeText()}Classroom Code`} value={this.state.classroomCode} name="code" onChange={this.handleChange} />
+              <input type="text" className="form-control" placeholder={`${this.classroomCodeText()}Classroom Code`} value={this.state.classroomCode} name="classroomCode" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">
