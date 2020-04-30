@@ -13,10 +13,8 @@ async function makeClassroom(reqBody) {
     name: `${reqBody.name}'s Classroom`,
     classroomCode: reqBody.classroomCode
   }
-  console.log('classbody', classBody)
   const classroom = await Classroom.create(classBody);
   classroom.save();
-  console.log('classroom', classroom._id)
   return classroom._id;
 }
 
@@ -28,7 +26,6 @@ async function signup(req, res) {
   // req.body.accountType === 'teacher' ? makeClassroom(req.body) : setClassroom(req.body);
   req.body.classroom = await makeClassroom(req.body)
   const user = new User(req.body);
-  console.log('user', user)
   try {
     await user.save();
     const token = createJWT(user);
