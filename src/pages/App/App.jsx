@@ -67,7 +67,7 @@ class App extends Component {
   }
 
   filterPosts(user, posts) {
-    /* console.log('filterposts) */
+    /* console.log('filterposts') */
     const postsArr = posts.filter(post =>
       user.savedPosts.includes(post._id)
     )
