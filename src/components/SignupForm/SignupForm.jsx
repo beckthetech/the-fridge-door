@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Select from "react-select";
 import userService from '../../utils/userService';
+import accountTypes from '../../accountTypes';
 
 class SignupForm extends Component {
 
   state = {
     name: '',
     email: '',
-    password: '',
-    passwordConf: '',
     accountType: '',
+    password: '',
+    passwordConf: ''
   };
+
+  handleChangeAccType = accountType => {
+    this.setState({ formData: { ...this.state.formData, accountType } });
+  }
 
   handleChange = (e) => {
     this.props.updateMessage('');
@@ -35,7 +41,7 @@ class SignupForm extends Component {
   }
 
   isFormInvalid() {
-    return !(this.state.name && this.state.email && this.state.accountType && this.state.password === this.state.passwordConf);
+    return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
   }
 
   render() {
@@ -55,7 +61,13 @@ class SignupForm extends Component {
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input type="text" className="form-control" placeholder="Account Type" value={this.state.accountType} name="accountType" onChange={this.handleChange} />
+              <Select
+                defaultValue={accountTypes[0]}
+                name="accountType"
+                onChange={(value) => this.setState(value)}
+                options={accountTypes}
+                required
+                />
             </div>
           </div>
           <div className="form-group">

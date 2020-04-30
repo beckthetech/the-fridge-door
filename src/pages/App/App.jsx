@@ -13,6 +13,7 @@ import EditPostPopUp from '../EditPostPopUp/EditPostPopUp';
 import LandingPage from '../../pages/LandingPage/LandingPage';
 import FAQPage from '../../pages/FAQ/FAQ';
 import Popup from '../../components/Popup/Popup';
+import * as Data from '../../data';
 
 
 class App extends Component {
@@ -109,7 +110,11 @@ class App extends Component {
             />
           } />
           <Route exact path='/detail' render={({ location }) =>
-            <PostDetailPopUp location={location} handleDeletePost={this.handleDeletePost} user={this.state.user} />
+            <PostDetailPopUp
+              location={location}
+              handleDeletePost={this.handleDeletePost}
+              user={this.state.user}
+            />
           } />
           <Route exact path='/add' render={() =>
             userService.getUser() ?

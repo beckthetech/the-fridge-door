@@ -11,4 +11,9 @@ const tags = [
   { value: 'history', label: 'History' },
 ]
 
-export default tags;
+const accountTypes = [
+  { value: 'parent', label: 'Parent' },
+  { value: 'teacher', label: 'Teacher' }
+]
+
+export default { tags, accountTypes };
