@@ -34,11 +34,18 @@ class App extends Component {
 
   handleAddPost = async newPostData => {
     const newPost = await postsApi.create(newPostData);
-    console.log(this.state.posts)
     this.setState(state => ({
       posts: [...state.posts, newPost]
     }),
       () => this.props.history.push('/index'));
+  }
+
+  handleAddSaved = async newSavedData => {
+    const newSavedPost = await postsApi.savePost(newSavedData);
+    this.setState(state => ({
+      savedPosts: [...state.savedPosts, newSavedPost]
+    }),
+      () => this.props.history.push('/myindex'));
   }
 
   handleUpdatePost = async updatedItemPost => {
@@ -104,6 +111,7 @@ class App extends Component {
               user={this.state.user}
               handleDeletePost={this.handleDeletePost}
               handleUpdatePost={this.handleUpdatePost}
+              handleAddSaved={this.handleAddSaved}
               location={location}
             />
           } />

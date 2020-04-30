@@ -6,6 +6,7 @@ function PostDetailPopUp({ props }) {
     <>
       <h1>Magnet Details</h1>
       <PostCard
+        handleAddSaved={props.handleAddSaved}
         key={props.post._id}
         post={props.post}
         user={props.user}

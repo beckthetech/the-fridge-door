@@ -13,6 +13,7 @@ function PostIndexPage(props) {
             <div className='GearListPage-grid'>
                 {props.posts.map(post =>
                     <IndexPageItem
+                    handleAddSaved={props.handleAddSaved}
                     post={post}
                     key={post._id}
                     handleDeletePost={props.handleDeletePost}

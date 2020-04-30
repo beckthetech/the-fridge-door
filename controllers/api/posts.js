@@ -7,7 +7,8 @@ module.exports = {
     create,
     update,
     delete: deleteOne,
-    indexSavedPosts
+    indexSavedPosts,
+    addSavedPost
 }
 
 async function index(req, res) {
@@ -26,11 +27,17 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
-    console.log(req.user)
     req.body.user = req.user;
     req.body.classroom = req.user.classroom;
     const post = await Post.create(req.body);
     res.status(201).json(post);
+}
+
+async function addSavedPost(req, res) {
+    const newSavedPost = await Post.findById(req.params.id);
+    await User.findByIdAndUpdate(req.user._id, 
+        { $push: { savedPosts: newSavedPost } },
+        { safe: true, upsert: true })
 }
 
 async function update(req, res) {
