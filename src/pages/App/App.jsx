@@ -19,6 +19,7 @@ import * as Data from '../../data';
 class App extends Component {
   state = {
     posts: [],
+    savedPosts: [],
     user: userService.getUser(),
   };
 
@@ -72,6 +73,11 @@ class App extends Component {
     this.setState({ posts });
   }
 
+  async handleSavedPosts() {
+    const savedPosts = await postsApi.getSavedPosts();
+    this.setState({ savedPosts });
+  }
+
   render() {
     return (
       <div className="App">
@@ -93,6 +99,7 @@ class App extends Component {
           } />
           <Route exact path='/index' render={({ location }) =>
             <PostIndexPage
+              pagename={`${this.state.user.classroomName}'s Fridge`}
               posts={this.state.posts}
               user={this.state.user}
               handleDeletePost={this.handleDeletePost}
@@ -102,6 +109,7 @@ class App extends Component {
           } />
           <Route exact path='/myindex' render={({ location }) =>
             <PostIndexPage
+              pagename={`${this.state.user.name}'s Fridge`}
               posts={this.filterPosts(this.state.posts)}
               user={this.state.user}
               handleDeletePost={this.handleDeletePost}

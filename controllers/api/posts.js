@@ -1,16 +1,22 @@
 const Post = require('../../models/post');
-const Classroom = require('../../models/classroom');
+const User = require('../../models/user');
 
 module.exports = {
     index,
     show,
     create,
     update,
-    delete: deleteOne
+    delete: deleteOne,
+    indexSavedPosts
 }
 
 async function index(req, res) {
     const posts = await Post.find({ classroom: req.user.classroom });
+    res.status(200).json(posts);
+}
+
+async function indexSavedPosts(req, res) {
+    const posts = await User.findById(req.user._id).populate('savedPosts');
     res.status(200).json(posts);
 }
 

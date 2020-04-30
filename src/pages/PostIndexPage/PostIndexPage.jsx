@@ -6,7 +6,7 @@ import './PostIndexPage.css'
 function PostIndexPage(props) {
     return (
         <>
-            <h1 className="marketplace-title">{`${props.user.classroomName}`} Fridge</h1>
+            <h1 className="marketplace-title">{props.pagename}</h1>
             <br />
             <br />
             <br />
