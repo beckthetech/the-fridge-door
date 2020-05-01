@@ -19,7 +19,7 @@ const NavBar = (props) => {
   return (
     <div className='NavBar'>
       {nav}
-      <div className='title'> THE FRIDGE DOOR</div>
+      {/* <div className='title'> THE FRIDGE DOOR</div> */}
     </div>
   );
 };
