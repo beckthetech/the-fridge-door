@@ -10,10 +10,7 @@ import PostIndexPage from '../PostIndexPage/PostIndexPage';
 import AddPostPopUp from '../AddPostPopUp/AddPostPopUp';
 import PostDetailPopUp from '../PostDetailPopUp/PostDetailPopUp';
 import EditPostPopUp from '../EditPostPopUp/EditPostPopUp';
-import LandingPage from '../../pages/LandingPage/LandingPage';
 import FAQPage from '../../pages/FAQ/FAQ';
-import Popup from '../../components/Popup/Popup';
-import * as Data from '../../data';
 
 
 class App extends Component {
@@ -41,14 +38,11 @@ class App extends Component {
   }
 
   handleAddSaved = async newSavedData => {
-    console.log('here')
     const newSavedPost = await postsApi.savePost(newSavedData)
-    console.log(newSavedPost);
     (this.setState(state => ({
       savedPosts: [...state.savedPosts, newSavedPost]
     }),
       () => this.props.history.push('/myindex')));
-    (console.log(this.state.savedPosts))
   }
 
   handleUpdatePost = async updatedItemPost => {
@@ -70,14 +64,10 @@ class App extends Component {
   }
 
   filterPosts(user, posts) {
-    // console.log(posts)
-    // console.log(user)
     const postsArr = posts.filter(post =>
       user.savedPosts.includes(post._id)
     )
-    // console.log(postsArr)
     this.setState({ savedPosts: postsArr });
-    // console.log(this.state.savedPosts)
   }
 
   // Lifecycle Methods

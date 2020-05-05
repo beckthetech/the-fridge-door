@@ -27,10 +27,8 @@ async function signup(req, res) {
   const classroom = req.body.accountType === 'teacher'
     ? await makeClassroom(req.body)
     : await setClassroom(req.body);
-  console.log('classroom', classroom);
   req.body.classroom = classroom._id;
   req.body.classroomName = classroom.name;
-  console.log('req.body', req.body)
   const user = new User(req.body);
   try {
     await user.save();
