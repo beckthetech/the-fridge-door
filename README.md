@@ -25,6 +25,7 @@ MERN stack - JavaScipt, React, Node.js, Express.js, Mongoose/MongoDB - JSON, JWT
 ## Getting Started
 [Click for GitHub repo]: https://github.com/chasmad/the-fridge-door
 [Click for GitHub repo]
+
 [Click to Launch]: https://the-fridge-door.herokuapp.com/
 [Click to Launch]
 
